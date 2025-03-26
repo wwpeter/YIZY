@@ -147,10 +147,18 @@ class HomeTopView: UIView {
         return label
     }()
     
+    @objc func headTapClick() {
+        if let delegate = self.homeEventDelegate {
+            delegate.getAllowance()
+        }
+    }
     
     private lazy var centerView: TopCenterView = {
         let view = TopCenterView()
-        
+        let tap = UITapGestureRecognizer()
+        tap.addTarget(self, action: #selector(headTapClick))
+        view.submitImg.addGestureRecognizer(tap)
+       
         return view
     }()
 
@@ -171,7 +179,7 @@ class HomeTopView: UIView {
     
     @objc func fagzhaClickT() {
         if let delegate = self.homeEventDelegate {
-            delegate.helpClick()
+            delegate.guideClick()
         }
     }
     private lazy var fangzhaBut: UIButton = {

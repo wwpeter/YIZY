@@ -118,7 +118,7 @@ class MyController: ViewController, UITableViewDelegate, UITableViewDataSource {
 //        self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    //MARK: - initialize
+    //MARK: - getter
     lazy var myTableView: UITableView = {
         let tableView = UITableView(frame: CGRectMake(sxDynamic(20), sxDynamic(279), kSizeScreenWidth - sxDynamic(40), sxDynamic(240)), style: .plain)
         tableView.delegate = self

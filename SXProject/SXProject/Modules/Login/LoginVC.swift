@@ -118,14 +118,7 @@ class LoginVC: ViewController, UITextFieldDelegate {
         return textField
     }()
   
-    private lazy var selectedBut: UIButton = {
-        let but = UIButton.init(type: .custom)
-        but.setImage(UIImage(named: "iot_login_check") , for: .normal)
-        but.setImage(UIImage(named: "login_selected") , for: .selected)
-        but.addTarget(self, action: #selector(agreeClick(button:)), for: .touchUpInside)
-        
-        return but
-    }()
+
  
     private lazy var protocolLab: ActiveLabel = {
         let protocolLab = ActiveLabel()
@@ -160,6 +153,15 @@ class LoginVC: ViewController, UITextFieldDelegate {
         }
         
         return protocolLab
+    }()
+    
+    private lazy var selectedBut: UIButton = {
+        let but = UIButton.init(type: .custom)
+        but.setImage(UIImage(named: "iot_login_check") , for: .normal)
+        but.setImage(UIImage(named: "login_selected") , for: .selected)
+        but.addTarget(self, action: #selector(agreeClick(button:)), for: .touchUpInside)
+        
+        return but
     }()
     
     private lazy var submitBut: UIButton = {

@@ -129,10 +129,11 @@ class TopCenterView: UIView {
         return label
     }()
     
-    private lazy var submitImg: UIImageView = {
+     lazy var submitImg: UIImageView = {
         let img = UIImageView()
         img.image = UIImage(named: "money_submit")
         img.contentMode = .scaleAspectFit
+         img.isUserInteractionEnabled = true
         
         return img
     }()

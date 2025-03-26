@@ -17,6 +17,8 @@
 		4A2DF2B42D93DBEE007EC0CD /* GaodeCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DF2B22D93DBEE007EC0CD /* GaodeCityModel.m */; };
 		4A2DF2B72D93E1CE007EC0CD /* LoginVC+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DF2B62D93E1CE007EC0CD /* LoginVC+Config.swift */; };
 		4A2DF2BD2D93EC37007EC0CD /* AddSubmitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DF2BC2D93EC37007EC0CD /* AddSubmitVC.swift */; };
+		4A2DF2C02D93F169007EC0CD /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DF2BF2D93F169007EC0CD /* BottomView.swift */; };
+		4A2DF2C22D93F321007EC0CD /* AddSubmitVC+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DF2C12D93F321007EC0CD /* AddSubmitVC+Config.swift */; };
 		4A3C698E2B980D1C00C5F2A9 /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3C698D2B980D1C00C5F2A9 /* TestVC.swift */; };
 		4A3C69942B98128E00C5F2A9 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3C69932B98128E00C5F2A9 /* TestView.swift */; };
 		4A3C699A2B98160300C5F2A9 /* CreateBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3C69992B98160200C5F2A9 /* CreateBaseView.swift */; };
@@ -295,6 +297,8 @@
 		4A2DF2B32D93DBEE007EC0CD /* GaodeCityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GaodeCityModel.h; sourceTree = "<group>"; };
 		4A2DF2B62D93E1CE007EC0CD /* LoginVC+Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC+Config.swift"; sourceTree = "<group>"; };
 		4A2DF2BC2D93EC37007EC0CD /* AddSubmitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubmitVC.swift; sourceTree = "<group>"; };
+		4A2DF2BF2D93F169007EC0CD /* BottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
+		4A2DF2C12D93F321007EC0CD /* AddSubmitVC+Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddSubmitVC+Config.swift"; sourceTree = "<group>"; };
 		4A3C698D2B980D1C00C5F2A9 /* TestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
 		4A3C69932B98128E00C5F2A9 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		4A3C69992B98160200C5F2A9 /* CreateBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateBaseView.swift; sourceTree = "<group>"; };
@@ -645,9 +649,19 @@
 		4A2DF2BB2D93EC12007EC0CD /* Add(提交) */ = {
 			isa = PBXGroup;
 			children = (
+				4A2DF2BE2D93F15A007EC0CD /* Views */,
 				4A2DF2BC2D93EC37007EC0CD /* AddSubmitVC.swift */,
+				4A2DF2C12D93F321007EC0CD /* AddSubmitVC+Config.swift */,
 			);
 			path = "Add(提交)";
+			sourceTree = "<group>";
+		};
+		4A2DF2BE2D93F15A007EC0CD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4A2DF2BF2D93F169007EC0CD /* BottomView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		4A46CABE2D5D863A003D3020 /* View */ = {
@@ -2046,6 +2060,7 @@
 				4AFF6BB42B45115F008F8C7F /* BindingExtensions.swift in Sources */,
 				4A46CAE12D5DE17B003D3020 /* UserProtocolVC.swift in Sources */,
 				4AFF6BD72B45115F008F8C7F /* ViewModelType.swift in Sources */,
+				4A2DF2C22D93F321007EC0CD /* AddSubmitVC+Config.swift in Sources */,
 				4A8BE2BF2BD60B6C005D466E /* BITNoticeView.m in Sources */,
 				4A46CADD2D5DCA26003D3020 /* RecordJKCell.swift in Sources */,
 				4AFF6AF32B4416EE008F8C7F /* ZlAlertTool.swift in Sources */,
@@ -2077,6 +2092,7 @@
 				4AFF6BAB2B45115F008F8C7F /* Localize.swift in Sources */,
 				4A8BE2892BD609A9005D466E /* BITBaseRequestApi.m in Sources */,
 				4AFF6BAF2B45115F008F8C7F /* MusicPlayerManager.swift in Sources */,
+				4A2DF2C02D93F169007EC0CD /* BottomView.swift in Sources */,
 				4A46CAF72D5DF707003D3020 /* ListCardCell.swift in Sources */,
 				4AFF6BD42B45115F008F8C7F /* Cache.swift in Sources */,
 				4A46CAE32D5DE1CE003D3020 /* UserProtocolCell.swift in Sources */,
