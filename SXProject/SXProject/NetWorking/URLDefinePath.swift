@@ -14,6 +14,14 @@ import Foundation
  /yzyhome/agreement/signout/  注销协议
  /yzyhome/agreement/share/  个人信息共享授权协议
  */
+///注册协议 -- 这是H5 webview加载
+let kUserAgreement = "/yzyhome/agreement/user/"
+///隐私协议
+let kPrivacyAgreement = "/yzyhome/agreement/privacy/"
+///注销协议
+let kSignoutAgreement = " /yzyhome/agreement/signout/"
+///个人信息共享授权协议
+let kAgreementShare = "/yzyhome/agreement/share/"
 /// 用户登录相关接口
 /// 根据手机验证码登录
 let kLogin = "/hht/h5/account/login"
