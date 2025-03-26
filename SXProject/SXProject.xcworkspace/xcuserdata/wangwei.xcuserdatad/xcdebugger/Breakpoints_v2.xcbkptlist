@@ -16,53 +16,5 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2414ED93-728D-4FB5-8328-EEE8813EE684"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SXProject/Modules/Login/LoginVC+Config.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "getPhoneCode()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "2414ED93-728D-4FB5-8328-EEE8813EE684 - 8796c71d7cacaffa"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.String) -&gt; () in SXProject.LoginVC.getPhoneCode() -&gt; ()"
-                  moduleName = "SXProject"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wangwei/Desktop/%E5%A4%96%E5%8C%85=%E4%B8%80%E7%9B%B4%E7%94%A8app/SXProject/SXProject/Modules/Login/LoginVC+Config.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "444">
-               </Location>
-               <Location
-                  uuid = "2414ED93-728D-4FB5-8328-EEE8813EE684 - 8796c71d7cacaffa"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.String) -&gt; () in SXProject.LoginVC.getPhoneCode() -&gt; ()"
-                  moduleName = "SXProject"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wangwei/Desktop/%E5%A4%96%E5%8C%85=%E4%B8%80%E7%9B%B4%E7%94%A8app/SXProject/SXProject/Modules/Login/LoginVC+Config.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "288">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

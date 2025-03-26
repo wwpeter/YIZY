@@ -11,6 +11,7 @@
 #import "GaodeCityModel.h"
 #import <MJExtension/MJExtension.h>
 #import "URLDefine.h"
+#import "BITMacro.h"
 
 @implementation GetAddressIPManager
 

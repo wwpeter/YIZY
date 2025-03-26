@@ -20,21 +20,15 @@
 #endif
 #import "WTSConfigManager.h"
 #import "FFDeviceName.h"
-
+#import "BITMacro.h"
 #import "WBRSA.h"
 #import "AESUtil.h"
 #import "RSAEncryptor.h"
+#import "GetAddressIPManager.h"
 #import "IPAddress.h"
-#import "BITMacro.h"
 #import "BITCommonMacro.h"
 #import "SVProgressHUD.h"
-#import "MJExtension/MJExtension.h"
-#import "GetAddressIPManager.h"
-
-#define PrivateKey @"MIIBVAIBADANBgkqhkiG9w0BAQEFAASCAT4wggE6AgEAAkEAx+cwxdinoQZQXZOJYwa9ILh/qFi3Q0L7YZBrF5c6O/7LswfgMUrAq/q/6l3qRAYMgjquyvleevZriMZi9X30jQIDAQABAkEAx7w+RVCmnQO8BOPHYER5cFooY0LRScmBdwhfmKCntQyq1aElYdS/+C2Z3potVQn5E1OFSzOQnIU6SlDr9qyNgQIhAOMc71O8V7YL2/XMuF/By3pP4vKsCzQC87KsizjZKZcRAiEA4VRErsE0/ryvPooAWbq5LsoTJQhWiqw35UQN2kXknb0CIFgB+mwEbCjLZ61Ua44P1v3KvzMyoBTDoBP48OpSnN9BAiBLkXJTVVKLmAYBqFCDxz5xta2D/u7fJPC9//vRVx1b1QIgb7jBYUP+YAlTVuhAgGsMlE7PPbdDOHI4QRlnTg4uiS0="
  
-#define Token  [[NSUserDefaults standardUserDefaults] valueForKey:@"access_token"]
-
 #define Lock()   dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
 #define Unlock() dispatch_semaphore_signal(_semaphore)
 
@@ -112,7 +106,6 @@ static NSString *const bocKeys = @"c6091428885d59621768176088293d95";
     if (self) {
         self.sessionManager = [AFHTTPSessionManager manager];
         self.sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html", @"text/json", @"text/javascript",@"text/plain", nil];
-        self.sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
         [self configurationHttpsRequest];
         _semaphore = dispatch_semaphore_create(1);
         _requestCostTimeDic = [NSMutableDictionary dictionary];
@@ -138,11 +131,7 @@ static NSString *const bocKeys = @"c6091428885d59621768176088293d95";
         
 }
     
-- (NSString *)getCurrentLanguageCode {
-    NSString *currentLanguageCode = [[NSLocale preferredLanguages] objectAtIndex:0];
-    return currentLanguageCode;
-}
-
+    
 - (AFHTTPRequestSerializer *)requestSerializerForRequest:(BITRequestApi *)requestApi {
     AFHTTPRequestSerializer *requestSerializer = nil;
     if (requestApi.requestSerializerType == BITRequestSerializerTypeHTTP) {
@@ -331,7 +320,7 @@ static NSString *const bocKeys = @"c6091428885d59621768176088293d95";
                filePath:(NSString *)filePath
                progress:(void (^)(NSProgress *))loadProgressBlock
 constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))constructingBlock
-        completeHandler:(void (^)(NSString *, NSError *))completeHandler
+        completeHandler:(void (^)(NSDictionary *, NSError *))completeHandler
 {
     NSError * __autoreleasing requestSerializationError = nil;
     requestApi.requestTask = [self sessionTaskForRequestApi:requestApi
@@ -350,11 +339,24 @@ constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))constructingBlock
                                       filePath:(NSString *)filePath
                                       progress:(void (^)(NSProgress *))loadProgressBlock
                      constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))constructingBlock
-                               completeHandler:(void (^)(NSString *, NSError *))completeHandler
+                               completeHandler:(void (^)(NSDictionary *, NSError *))completeHandler
 {
     self.requestCount++;
     NSString *urlString = [requestApi.baseURL stringByAppendingString:requestApi.apiPath];
-    NSLog(@"%@", urlString);
+//    //计算请求URL和参数拼接字符串的MD5值
+//    NSString *apiMD5 = [[NSString combineURLWithBaseURL:urlString parameters:requestApi.params] bitinfo_md5hashString];
+//    BITRequestApi *savedApi = [self.requestMap objectForKey:apiMD5];
+//    if (savedApi) {
+//        if (requestApi.allowConcurrentExecution) {
+//            apiMD5 = [NSString stringWithFormat:@"%@%lu", apiMD5, (unsigned long)self.requestCount];
+//            [self.requestMap setObject:requestApi forKey:apiMD5];
+//        } else {
+//            return nil;
+//        }
+//    } else {
+//        [self.requestMap setObject:requestApi forKey:apiMD5];
+//    }
+//    requestApi.uniqueIdentify = apiMD5;
     //重新设置requestApi的请求参数
 //    NSDictionary *requestParams = [self generateRequestParams:requestApi updateFlag:YES];
     id requestParams = requestApi.params;
@@ -415,7 +417,15 @@ constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))constructingBlock
 {
     //获取到外界设置进来的参数字典
     NSMutableDictionary *paramsDic = [NSMutableDictionary dictionaryWithDictionary:requestApi.params];
-
+//    if (updateFlag)
+//    {
+//        long long visitTime = (long long)([[NSDate date] timeIntervalSince1970] * 1000 + [BITSingleObject sharedInstance].localServerDifferenceTime);
+//        NSString *visitTimeStr = [NSString stringWithFormat:@"%lld", visitTime];
+//        [paramsDic setSafeObject:visitTimeStr forKey:@"visitTime"];//请求unix时间戳
+//        NSString *key = [BITSingleObject getEncodeKeyWithVisitTime:visitTimeStr];
+//        [paramsDic setSafeObject:key forKey:@"key"];//请求unix时间戳
+//        requestApi.setParams(paramsDic);
+//    }
     paramsDic = [NSMutableDictionary dictionaryWithDictionary:requestApi.params];
     [[BITRequestConfig sharedConfig].extraBuiltinParameterHandlers enumerateObjectsUsingBlock:^(ExtraBuiltinParametersHandler obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSDictionary *result = obj();
@@ -426,7 +436,23 @@ constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))constructingBlock
     if ([BITRequestConfig sharedConfig].builtinParameters) {
         [paramsDic addEntriesFromDictionary:[BITRequestConfig sharedConfig].builtinParameters];
     }
-   
+    if (updateFlag)
+    {
+//        long long visitTime = [[BITSingleObject sharedInstance] getNowTime];
+//        NSString *visitTimeStr = [NSString stringWithFormat:@"%lld", visitTime];
+//        [paramsDic setSafeObject:visitTimeStr forKey:@"timestamp"];//请求unix时间戳
+//        NSString *key = [BITSingleObject getEncodeKeyWithVisitTime:visitTimeStr paramsDic:paramsDic];
+//        [paramsDic setSafeObject:key forKey:@"sign"];//请求签名
+//        requestApi.setParams(paramsDic);
+    }
+//    if ([paramsDic containKey:@"visitTime"]) {
+//        NSTimeInterval timestamp = [[paramsDic safeObjectForKey:@"visitTime"] longLongValue];
+//        if ([BITRequestConfig sharedConfig].timeOffset != 0) {
+//            [paramsDic setSafeObject:@([BITRequestConfig sharedConfig].timeOffset + timestamp) forKey:@"timestamp"];
+//        }
+//    }
+//    NSString *sign = [self generateProtectValueSign:paramsDic];
+//    [paramsDic setSafeObject:sign forKey:@"sign"];
     return [paramsDic copy];
 }
 
@@ -439,7 +465,7 @@ constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))constructingBlock
                                        URLString:(NSString *)URLString
                                       parameters:(id)parameters
                                            error:(NSError * _Nullable __autoreleasing *)error
-                                 completeHandler:(void (^)(NSString *, NSError *))completeHandler
+                                 completeHandler:(void (^)(NSDictionary *, NSError *))completeHandler
 {
     return [self dataTaskWithRequestApi:requestApi
                              httpMethod:method
@@ -458,7 +484,7 @@ constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))constructingBlock
                                       parameters:(id)parameters
                        constructingBodyWithBlock:(nullable void (^)(id <AFMultipartFormData> formData))block
                                            error:(NSError * _Nullable __autoreleasing *)error
-                                 completeHandler:(void (^)(NSString *, NSError *))completeHandler
+                                 completeHandler:(void (^)(NSDictionary *, NSError *))completeHandler
 {
     
     return [self dataTaskWithRequestApi:requestApi
@@ -481,7 +507,7 @@ constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))constructingBlock
                        constructingBodyWithBlock:(nullable void (^)(id <AFMultipartFormData> formData))block
                                         progress:(void (^)(NSProgress *))loadProgressBlock
                                            error:(NSError * _Nullable __autoreleasing *)error
-                                 completeHandler:(void (^)(NSString *, NSError *))completeHandler
+                                 completeHandler:(void (^)(NSDictionary *, NSError *))completeHandler
 {
     NSMutableURLRequest *request = nil;
     
@@ -494,15 +520,17 @@ constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))constructingBlock
             request = [requestSerializer requestWithMethod:method URLString:URLString parameters:parameters error:error];
         }else{
             //ff传body参数
-            NSString *bodyStr = [parameters mj_JSONString];
+            NSString *bodyStr = [parameters jsonString];
             //AES加密
-            NSString *encryptStr = [AESUtil aesEncrypt: bodyStr];
+            bodyStr = [AESUtil aesEncrypt: bodyStr];
 #pragma -请求体加密
             NSDictionary *dic = parameters;
-            NSLog(@"dic.count = %ld,dic = %@,bodyStr = %@",dic.count,dic,encryptStr);
+            NSLog(@"dic.count = %ld,dic = %@,bodyStr = %@",dic.count,dic,bodyStr);
             if (dic.count) {
-                NSData *body = [encryptStr dataUsingEncoding:NSUTF8StringEncoding];
+                NSData *body = [bodyStr dataUsingEncoding:NSUTF8StringEncoding];
+                
                 request = [requestSerializer requestWithMethod:method URLString:URLString parameters:nil error:error];
+                //        [request setHTTPMethod:method];
                 [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
                 [request setHTTPBody:body];
             }else{
@@ -556,7 +584,7 @@ constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))constructingBlock
              sessionTask:(NSURLSessionTask *)task
           responseObject:(id)responseObject
                    error:(NSError *)error
-         completeHandler:(void (^)(NSString *, NSError *))completeHandler
+         completeHandler:(void (^)(NSDictionary *, NSError *))completeHandler
               isDownload:(BOOL)isDownload
 
 {
@@ -709,16 +737,7 @@ constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))constructingBlock
         completeHandler(jsonDic, defaultError);
     }
 }
-/**
- APP_PARAM_VALIDATE_ERROR("APP_9998", "参数校验错误"),
- APP_VALIDATE_CODE_ERROR("APP_9997", "验证码错误或者已过期"),
- APP_PASSWORD_NOT_SAME("APP_9996", "密码不一致"),
- APP_PASSWORD_FORMAT_ERROR("APP_9995", "密码格式"),
- APP_PASSWORD_ERROR("APP_9994", "密码错误"),
 
- APP_USER_NOT_EXIST("APP_00004", "用户不存在"),
- APP_USER_EXIST("APP_00005", "用户已存在"),
- */
 -(NSMutableDictionary *)processBinGoWithJsonDic:(NSDictionary *)jsonDic
                                     defaultError:(NSError *)defaultError
 {
@@ -767,9 +786,33 @@ constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))constructingBlock
         else {
             jsonDic = [NSDictionary dictionaryWithObject:@"" forKey:@"body"];
             result = nil;
-
+//            defaultError = [NSError errorWithDomain:@"返回data格式错误" code:ResponseDataFormatErrorCode userInfo:nil];
+//            [self hiddenHub];
         }
-
+//        if(!(jsonDic == nil || [jsonDic isKindOfClass:[NSNull class]] || ![jsonDic isKindOfClass:[NSDictionary class]] || jsonDic.allKeys.count == 0) && ([jsonDic containKey:@"visitTime"]) && ([jsonDic containKey:@"key"]))
+//        {
+//            NSString *key = [jsonDic safeObjectForKey:@"key"];
+//            NSString *visitTime = [jsonDic safeObjectForKey:@"visitTime"];
+////            key = @"123";
+////            visitTime = @"1602581022848";
+//            if(!IsEmptyString(key) && !IsEmptyString(visitTime))
+//            {
+//                if(fabs([[NSDate date] timeIntervalSince1970] * 1000 + [BITSingleObject sharedInstance].localServerDifferenceTime - [visitTime longLongValue]) > 5*60*1000)
+//                {
+//                    defaultError = [NSError errorWithDomain:@"请求超时" code:ResponseDataFormatErrorCode userInfo:nil];
+//                    [self hiddenHub];
+//                }
+//                else
+//                {
+//                    NSString *newKey = [BITSingleObject getDecodeKeyWithVisitTime:visitTime];
+//                    if(!IsEmptyString(newKey) && ![newKey isEqualToString:key])
+//                    {
+//                        defaultError = [NSError errorWithDomain:@"返回数据错误" code:ResponseDataFormatErrorCode userInfo:nil];
+//                        [self hiddenHub];
+//                    }
+//                }
+//            }
+//        }
     } else {
         [self hiddenHub];
         NSString *domain = @"";
@@ -1017,7 +1060,7 @@ constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))constructingBlock
                                               parameters:(id)parameters
                                                 progress:(nullable void (^)(NSProgress *downloadProgress))downloadProgressBlock
                                                    error:(NSError * _Nullable __autoreleasing *)error
-                                         completeHandler:(void (^)(NSString *, NSError *))completeHandler
+                                         completeHandler:(void (^)(NSDictionary *, NSError *))completeHandler
 {
     NSMutableURLRequest *urlRequest = [requestSerializer requestWithMethod:@"GET" URLString:URLString parameters:parameters error:error];
     

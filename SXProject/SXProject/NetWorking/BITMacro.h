@@ -77,6 +77,8 @@
 
 #define RELOAdPHSH @"ReLoadPush"
 
+#define wts_IsStrEmpty(_ref)    (((_ref) == nil) || ([(_ref) isEqual:[NSNull null]]) ||([(_ref)isEqualToString:@""]) || ([(_ref) isEqual:@"<null>"])|| ([(_ref) isEqual:@"(null)"]))
+
 //注意服务器返回数字类型的key-value的value值，若当字符串判断，结果为非字符串
 static inline NSString *getNotNilString(id thing) {
     
