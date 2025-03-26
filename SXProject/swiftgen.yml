@@ -1,7 +1,0 @@
-xcassets:
-  inputs:
-    - SXProject/Resources/Images.xcassets
-    - SXProject/Resources/Colors.xcassets
-  outputs:
-    - templateName: swift5
-      output: SXProject/Generated/Assets.swift
