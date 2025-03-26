@@ -31,14 +31,14 @@ extension AppDelegate {
     }
     /// 跳转登录新
     @objc func goLoginNew() {
-//        guard !(UIApplication.sx.getCurrentViewController() is LoginVC) else { return }
-//        let vc = LoginVC()
-//        let niv = NavigationController.init(rootViewController: vc)
-//        niv.modalPresentationStyle = .fullScreen
-//        
-//        DHRouterUtil.getCurrentVc()?.present(niv, animated: true, completion: {
-//            printLog("进入登录！")
-//        })
+        guard !(UIApplication.sx.getCurrentViewController() is LoginVC) else { return }
+        let vc = LoginVC()
+        let niv = NavigationController.init(rootViewController: vc)
+        niv.modalPresentationStyle = .fullScreen
+        
+        DHRouterUtil.getCurrentVc()?.present(niv, animated: true, completion: {
+            printLog("进入登录！")
+        })
     }
     
     /// 退出

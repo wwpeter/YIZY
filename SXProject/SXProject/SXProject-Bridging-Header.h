@@ -22,6 +22,13 @@
 //#import "EncryptManager.h"
 #import "FFDeviceName.h"
 
+//添加所有OC 的桥接
+#import "RequestConfigManager.h"
+#import "NetworkRequestManager.h"
+#import "URLDefine.h"
+#import "AESUtil.h"
+#import "GetAddressIPManager.h"
+
 
 //#import ""
 //#import ""

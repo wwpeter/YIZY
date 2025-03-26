@@ -52,7 +52,10 @@ extension AppDelegate {
     }
 
     
-    // MARK: - MegaRing
+    // MARK: - ip获取
+    func getIPAdress() {
+        GetAddressIPManager.sharedInstance().getAddressIp()
+    }
    
     // MARK: - bugly
     func bugly() {

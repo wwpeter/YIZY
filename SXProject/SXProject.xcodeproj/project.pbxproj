@@ -15,6 +15,7 @@
 		4A2DF2AE2D93DA93007EC0CD /* AESUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DF2AB2D93DA93007EC0CD /* AESUtil.m */; };
 		4A2DF2B12D93DB9C007EC0CD /* GetAddressIPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DF2AF2D93DB9C007EC0CD /* GetAddressIPManager.m */; };
 		4A2DF2B42D93DBEE007EC0CD /* GaodeCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DF2B22D93DBEE007EC0CD /* GaodeCityModel.m */; };
+		4A2DF2B72D93E1CE007EC0CD /* LoginVC+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DF2B62D93E1CE007EC0CD /* LoginVC+Config.swift */; };
 		4A3C698E2B980D1C00C5F2A9 /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3C698D2B980D1C00C5F2A9 /* TestVC.swift */; };
 		4A3C69942B98128E00C5F2A9 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3C69932B98128E00C5F2A9 /* TestView.swift */; };
 		4A3C699A2B98160300C5F2A9 /* CreateBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3C69992B98160200C5F2A9 /* CreateBaseView.swift */; };
@@ -291,6 +292,7 @@
 		4A2DF2B02D93DB9C007EC0CD /* GetAddressIPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetAddressIPManager.h; sourceTree = "<group>"; };
 		4A2DF2B22D93DBEE007EC0CD /* GaodeCityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GaodeCityModel.m; sourceTree = "<group>"; };
 		4A2DF2B32D93DBEE007EC0CD /* GaodeCityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GaodeCityModel.h; sourceTree = "<group>"; };
+		4A2DF2B62D93E1CE007EC0CD /* LoginVC+Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC+Config.swift"; sourceTree = "<group>"; };
 		4A3C698D2B980D1C00C5F2A9 /* TestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
 		4A3C69932B98128E00C5F2A9 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		4A3C69992B98160200C5F2A9 /* CreateBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateBaseView.swift; sourceTree = "<group>"; };
@@ -1542,6 +1544,7 @@
 			children = (
 				4A690F032D69C68C00768DC6 /* Views */,
 				4A4D96802D0FF3A300FA6E7A /* LoginVC.swift */,
+				4A2DF2B62D93E1CE007EC0CD /* LoginVC+Config.swift */,
 				4A690F0D2D69D87F00768DC6 /* SendCodeVC.swift */,
 			);
 			path = Login;
@@ -2082,6 +2085,7 @@
 				4A8BE3462BD63207005D466E /* WBCloudFaceNetManager.m in Sources */,
 				4A8BE28F2BD609AA005D466E /* BITCacheCenter.m in Sources */,
 				4A3C698E2B980D1C00C5F2A9 /* TestVC.swift in Sources */,
+				4A2DF2B72D93E1CE007EC0CD /* LoginVC+Config.swift in Sources */,
 				4A46CAF02D5DEFA4003D3020 /* BankAddCardVC+List.swift in Sources */,
 				4A8BE3812BD65DB8005D466E /* RequestConfigManager.m in Sources */,
 				4A46CAF92D5DFB98003D3020 /* AddCardListCell.swift in Sources */,

@@ -18,7 +18,18 @@ class LoginVC: ViewController, UITextFieldDelegate {
         initViewLayouts()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
     func initViews() {
+        view.backgroundColor = .white
         view.addSubview(topView)
         
         view.addSubview(groundView)
@@ -43,14 +54,14 @@ class LoginVC: ViewController, UITextFieldDelegate {
             make.right.equalTo(groundView.snp.right).offset(sxDynamic(-15))
         }
         selectedBut.snp.makeConstraints { make in
-            make.width.height.equalTo(sxDynamic(20))
+            make.width.height.equalTo(sxDynamic(22))
             make.left.equalTo(groundView.snp.left)
             make.top.equalTo(groundView.snp.bottom).offset(sxDynamic(22))
         }
         protocolLab.snp.makeConstraints { make in
-            make.left.equalTo(selectedBut.snp.trailing)
+            make.leading.equalTo(selectedBut.snp.trailing)
             make.right.equalTo(groundView.snp.right)
-            make.top.equalTo(selectedBut.snp.top)
+            make.centerY.equalTo(selectedBut.snp.centerY)
         }
         submitBut.snp.makeConstraints { make in
             make.top.equalTo(selectedBut.snp.bottom).offset(sxDynamic(62))
@@ -75,7 +86,10 @@ class LoginVC: ViewController, UITextFieldDelegate {
     }
     @objc
     func loginClick() {
+        getPhoneCode()
+        let vc = SendCodeVC()
         
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
@@ -87,16 +101,17 @@ class LoginVC: ViewController, UITextFieldDelegate {
         return view
     }()
     private lazy var groundView: UIView = {
+        let view = UIView()
         view.backgroundColor = kBF8
         view.layer.cornerRadius = sxDynamic(22.5)
         
         return view
     }()
-    private lazy var textField: UITextField = {
+    lazy var textField: UITextField = {
         let textField = UITextField()
         textField.clearButtonMode = .always
         textField.placeholder = "请输入账号"
-        textField.keyboardType = .default
+        textField.keyboardType = .numberPad
 //        textField.borderStyle = .roundedRect
         textField.delegate = self
         
