@@ -8,6 +8,12 @@
 
 import Foundation
 
+/*
+ /yzyhome/agreement/user/   注册协议
+ /yzyhome/agreement/privacy/  隐私协议
+ /yzyhome/agreement/signout/  注销协议
+ /yzyhome/agreement/share/  个人信息共享授权协议
+ */
 /// 用户登录相关接口
 /// 根据手机验证码登录
 let kLogin = "/hht/h5/account/login"
