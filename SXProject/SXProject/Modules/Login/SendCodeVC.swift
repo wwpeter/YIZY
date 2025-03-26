@@ -24,6 +24,7 @@ class SendCodeVC: ViewController {
     }
     
     func initViews() {
+        view.backgroundColor = .white
         codeUI()
         
         view.addSubview(titleLabel)
@@ -69,7 +70,7 @@ class SendCodeVC: ViewController {
                 self?.codeBut.isHidden = true
                 print("倒计时: \(String(describing: self?.countdownSeconds))秒")
                 let tempStr = "重新发送".sx_T
-                self?.codeSecond.text = String.init(format: "%@%ld\("s")", self?.countdownSeconds ?? 0, tempStr)
+                self?.codeSecond.text = String.init(format: "%@%ld\("s")", tempStr, self?.countdownSeconds ?? 0)
             } else {
                 // 倒计时结束
                 timer.invalidate()
@@ -139,7 +140,7 @@ class SendCodeVC: ViewController {
 //        config.finishFonts = [UIFont.boldSystemFont(ofSize: 20), UIFont.systemFont(ofSize: 20)]
 //        config.finishTextColors = [UIColor.green, UIColor.orange]
         
-        let codeView = JHVerifyCodeView.init(frame: CGRect(x: 0, y: sxDynamic(160), width: kSizeScreenWidth, height: sxDynamic(63)),
+        let codeView = JHVerifyCodeView.init(frame: CGRect(x: 0, y: sxDynamic(160) + kTopBarHeight, width: kSizeScreenWidth, height: sxDynamic(63)),
                                              config: config)
         codeView.inputBlock = { (text: String) -> () in
             printLog(text)
