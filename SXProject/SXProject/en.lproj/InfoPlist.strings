@@ -1,0 +1,30 @@
+/* 
+  InfoPlist.strings
+  SXProject
+
+  Created by 王威 on 2024/1/3.
+  
+*/
+
+"CFBundleDisplayName"="YZY";
+
+// 相机使用权限说明
+NSCameraUsageDescription = "Please turn on the camera access permission to take pictures with the camera normally, scan the qr code and other functions.";
+
+//相册权限 -- 使用
+NSPhotoLibraryUsageDescription = "Please enable album access, modify the profile picture and cover photo, and save the photo to the local album.";
+//相册权限 --添加使用
+NSPhotoLibraryAddUsageDescription = "Please enable album access, modify the profile picture and cover photo, and save the photo to the local album.";
+
+//隐私跟踪权限
+NSUserTrackingUsageDescription = "In order to provide geofencing functionality in XX, we would like to access your location identifier.";
+//本地网络
+NSLocalNetworkUsageDescription = "So the app can discover and connect to devices on the networks you use.";
+
+NSLocationAlwaysAndWhenInUseUsageDescription = "Please enable positioning info permission to realize service based on geographical location.";
+NSLocationAlwaysUsageDescription = "The XX app needs the permission of the cellphone location to configure your Wi-Fi network.";
+NSLocationUsageDescription = "Please enable positioning info permission to realize service based on geographical location.";
+NSLocationWhenInUseUsageDescription = "The XX app needs the permission of the cellphone location to configure your Wi-Fi network.";
+
+//录音权限对讲
+NSMicrophoneUsageDescription = "Please turn on the access right of microphone for normal intercom and other functions.";
