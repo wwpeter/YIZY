@@ -33,6 +33,7 @@ let kQueryBankCardList = "/hht/h5/userIndex/queryBankCardList"
 let kQueryOrdersHistoryPageApp = "/hht/h5/userIndex/queryOrdersHistoryPageApp"
 
 /// 通用接口
+/// 发送验证码
 let kSendValidateCode = "/hht/common/sendValidateCode"
 
 ///用户主流程相关接口
@@ -55,3 +56,8 @@ let kQueryBlackUserIdCard = "/hht/h5/user/queryBlackUserIdCard"
 ///字典控制器
 ///查询对应的模块
 let kQueryListByType = "/hht/dictionary/queryListByType"
+
+
+
+
+

@@ -12,6 +12,9 @@
 		4A228D882B50CD8A005FD89B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4AC6059F2B4411E100C00151 /* Localizable.strings */; };
 		4A228D932B50D683005FD89B /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A228D922B50D683005FD89B /* TestViewController.m */; };
 		4A228D962B50DF80005FD89B /* ConnectDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A228D952B50DF80005FD89B /* ConnectDeviceManager.m */; };
+		4A2DF2AE2D93DA93007EC0CD /* AESUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DF2AB2D93DA93007EC0CD /* AESUtil.m */; };
+		4A2DF2B12D93DB9C007EC0CD /* GetAddressIPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DF2AF2D93DB9C007EC0CD /* GetAddressIPManager.m */; };
+		4A2DF2B42D93DBEE007EC0CD /* GaodeCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DF2B22D93DBEE007EC0CD /* GaodeCityModel.m */; };
 		4A3C698E2B980D1C00C5F2A9 /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3C698D2B980D1C00C5F2A9 /* TestVC.swift */; };
 		4A3C69942B98128E00C5F2A9 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3C69932B98128E00C5F2A9 /* TestView.swift */; };
 		4A3C699A2B98160300C5F2A9 /* CreateBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3C69992B98160200C5F2A9 /* CreateBaseView.swift */; };
@@ -108,7 +111,6 @@
 		4A8BE3362BD63207005D466E /* AESUtilNew.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8BE2FF2BD63207005D466E /* AESUtilNew.m */; };
 		4A8BE3372BD63207005D466E /* YXBTextFieldPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8BE3052BD63207005D466E /* YXBTextFieldPattern.m */; };
 		4A8BE3392BD63207005D466E /* RSAUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8BE3072BD63207005D466E /* RSAUtil.m */; };
-		4A8BE33A2BD63207005D466E /* AESUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8BE3082BD63207005D466E /* AESUtil.m */; };
 		4A8BE33B2BD63207005D466E /* SuperVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8BE3092BD63207005D466E /* SuperVM.m */; };
 		4A8BE33D2BD63207005D466E /* UIView+JHDrawCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8BE30D2BD63207005D466E /* UIView+JHDrawCategory.m */; };
 		4A8BE33E2BD63207005D466E /* WBRSA.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8BE30E2BD63207005D466E /* WBRSA.m */; };
@@ -283,6 +285,12 @@
 		4A228D922B50D683005FD89B /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		4A228D942B50DF80005FD89B /* ConnectDeviceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectDeviceManager.h; sourceTree = "<group>"; };
 		4A228D952B50DF80005FD89B /* ConnectDeviceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectDeviceManager.m; sourceTree = "<group>"; };
+		4A2DF2AB2D93DA93007EC0CD /* AESUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AESUtil.m; sourceTree = "<group>"; };
+		4A2DF2AD2D93DA93007EC0CD /* AESUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AESUtil.h; sourceTree = "<group>"; };
+		4A2DF2AF2D93DB9C007EC0CD /* GetAddressIPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetAddressIPManager.m; sourceTree = "<group>"; };
+		4A2DF2B02D93DB9C007EC0CD /* GetAddressIPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetAddressIPManager.h; sourceTree = "<group>"; };
+		4A2DF2B22D93DBEE007EC0CD /* GaodeCityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GaodeCityModel.m; sourceTree = "<group>"; };
+		4A2DF2B32D93DBEE007EC0CD /* GaodeCityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GaodeCityModel.h; sourceTree = "<group>"; };
 		4A3C698D2B980D1C00C5F2A9 /* TestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
 		4A3C69932B98128E00C5F2A9 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		4A3C69992B98160200C5F2A9 /* CreateBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateBaseView.swift; sourceTree = "<group>"; };
@@ -431,7 +439,6 @@
 		4A8BE3042BD63207005D466E /* WBCloudFaceNetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCloudFaceNetManager.h; sourceTree = "<group>"; };
 		4A8BE3052BD63207005D466E /* YXBTextFieldPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXBTextFieldPattern.m; sourceTree = "<group>"; };
 		4A8BE3072BD63207005D466E /* RSAUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAUtil.m; sourceTree = "<group>"; };
-		4A8BE3082BD63207005D466E /* AESUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AESUtil.m; sourceTree = "<group>"; };
 		4A8BE3092BD63207005D466E /* SuperVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperVM.m; sourceTree = "<group>"; };
 		4A8BE30A2BD63207005D466E /* UIButton+GradientBackgroundColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+GradientBackgroundColor.h"; sourceTree = "<group>"; };
 		4A8BE30D2BD63207005D466E /* UIView+JHDrawCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JHDrawCategory.m"; sourceTree = "<group>"; };
@@ -458,7 +465,6 @@
 		4A8BE32B2BD63207005D466E /* UIView+JHDrawCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JHDrawCategory.h"; sourceTree = "<group>"; };
 		4A8BE32D2BD63207005D466E /* UIButton+GradientBackgroundColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+GradientBackgroundColor.m"; sourceTree = "<group>"; };
 		4A8BE32E2BD63207005D466E /* SuperVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperVM.h; sourceTree = "<group>"; };
-		4A8BE32F2BD63207005D466E /* AESUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AESUtil.h; sourceTree = "<group>"; };
 		4A8BE3312BD63207005D466E /* RSAUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAUtil.h; sourceTree = "<group>"; };
 		4A8BE3322BD63207005D466E /* BITMobilePassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITMobilePassword.h; sourceTree = "<group>"; };
 		4A8BE3332BD63207005D466E /* RSAEncryptorNew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAEncryptorNew.m; sourceTree = "<group>"; };
@@ -936,6 +942,12 @@
 		4A8BE2932BD609F3005D466E /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				4A2DF2B32D93DBEE007EC0CD /* GaodeCityModel.h */,
+				4A2DF2B22D93DBEE007EC0CD /* GaodeCityModel.m */,
+				4A2DF2B02D93DB9C007EC0CD /* GetAddressIPManager.h */,
+				4A2DF2AF2D93DB9C007EC0CD /* GetAddressIPManager.m */,
+				4A2DF2AD2D93DA93007EC0CD /* AESUtil.h */,
+				4A2DF2AB2D93DA93007EC0CD /* AESUtil.m */,
 				4A8BE2F62BD631A7005D466E /* WTSDataMacro.h */,
 				4A8BE2F32BD630BD005D466E /* BITCommonMacro.h */,
 				4A8BE2EF2BD62F72005D466E /* WTSDeviceDataLibrery.h */,
@@ -1064,8 +1076,6 @@
 			children = (
 				4A8BE3622BD637DA005D466E /* NSString+Size.h */,
 				4A8BE3632BD637DB005D466E /* NSString+Size.m */,
-				4A8BE32F2BD63207005D466E /* AESUtil.h */,
-				4A8BE3082BD63207005D466E /* AESUtil.m */,
 				4A8BE3252BD63207005D466E /* AESUtilNew.h */,
 				4A8BE2FF2BD63207005D466E /* AESUtilNew.m */,
 				4A8BE3112BD63207005D466E /* BITCleanCache.h */,
@@ -1969,6 +1979,7 @@
 				4AFF6BBC2B45115F008F8C7F /* UIWindow+Ex.swift in Sources */,
 				4AFF6BDD2B45115F008F8C7F /* BaseCell.swift in Sources */,
 				4AFF6BC32B45115F008F8C7F /* UIWindowExtensions.swift in Sources */,
+				4A2DF2B12D93DB9C007EC0CD /* GetAddressIPManager.m in Sources */,
 				4AFF6BC82B45115F008F8C7F /* Date+ZL.swift in Sources */,
 				4A7828142D6B1004000D7E7C /* TopViewDetailView.swift in Sources */,
 				4AFF6BE42B451237008F8C7F /* ImportFramework.swift in Sources */,
@@ -1996,6 +2007,7 @@
 				4A78280F2D6B0FD5000D7E7C /* ApplicationDetailVC.swift in Sources */,
 				4AFF6BE92B45294E008F8C7F /* HomeController.swift in Sources */,
 				4A8BE3452BD63207005D466E /* RSAEncryptor.m in Sources */,
+				4A2DF2B42D93DBEE007EC0CD /* GaodeCityModel.m in Sources */,
 				4A8BE3842BD65E9C005D466E /* UIView+HDCornerBorder.m in Sources */,
 				4A8BE2B82BD60B6C005D466E /* BGCommonScrollToolPanel.m in Sources */,
 				4A8BE3B32BDB4898005D466E /* CommonTool.swift in Sources */,
@@ -2005,6 +2017,7 @@
 				4A4D96892D0FF6C900FA6E7A /* GradationView.swift in Sources */,
 				4A46CAD12D5DC7B7003D3020 /* ProtocolVC.swift in Sources */,
 				4AA93FD22BF7052600A6306D /* FileUploadManager.m in Sources */,
+				4A2DF2AE2D93DA93007EC0CD /* AESUtil.m in Sources */,
 				4A8BE2A32BD60AAC005D466E /* BITMemoryCache.m in Sources */,
 				4A46CAEA2D5DE964003D3020 /* BankListVC+List.swift in Sources */,
 				4A8BE3412BD63207005D466E /* BITMobilePassword.m in Sources */,
@@ -2014,7 +2027,6 @@
 				4A8BE34B2BD63207005D466E /* TPTips.m in Sources */,
 				4A8BE33E2BD63207005D466E /* WBRSA.m in Sources */,
 				4A8BE3A32BD8E8AA005D466E /* StringConfig.swift in Sources */,
-				4A8BE33A2BD63207005D466E /* AESUtil.m in Sources */,
 				4AFF6BB82B45115F008F8C7F /* UINavigationItemExtensions.swift in Sources */,
 				4AFF6BB42B45115F008F8C7F /* BindingExtensions.swift in Sources */,
 				4A46CAE12D5DE17B003D3020 /* UserProtocolVC.swift in Sources */,

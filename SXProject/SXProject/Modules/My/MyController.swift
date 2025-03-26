@@ -63,20 +63,20 @@ class MyController: ViewController, UITableViewDelegate, UITableViewDataSource {
     func userDetail() {
         let token = getUserDefault(key: "access_token")
         let param = ["token": token]
-        NetworkRequestManager.sharedInstance().requestPath(kUserDetail, withParam: param) { [weak self] result in
-            printLog(result)
-            let detailStr = result.sx.base64Encoded
-            setUserDefault(key: "userDetail", value: detailStr ?? "")
-            _ = JSONHelper.exchangeDic(jsonStr: result)
-            if let userInfo: UserInfo = JSONHelper.parse(jsonString: result) {
-                printLog(userInfo)
-                UserSingleton.shared.userInfo = userInfo
-            }
-            self?.updataUserDetail()
-            self?.refreshTopView()
-        } failure: { error in
-//            Toast.showInfoMessage("".sx_T)
-        }
+//        NetworkRequestManager.sharedInstance().requestPath(kQueryUserOrderInfo, withParam: param) { [weak self] result in
+//            printLog(result)
+//            let detailStr = result.sx.base64Encoded
+//            setUserDefault(key: "userDetail", value: detailStr ?? "")
+//            _ = JSONHelper.exchangeDic(jsonStr: result)
+//            if let userInfo: UserInfo = JSONHelper.parse(jsonString: result) {
+//                printLog(userInfo)
+//                UserSingleton.shared.userInfo = userInfo
+//            }
+//            self?.updataUserDetail()
+//            self?.refreshTopView()
+//        } failure: { error in
+////            Toast.showInfoMessage("".sx_T)
+//        }
     }
     
     

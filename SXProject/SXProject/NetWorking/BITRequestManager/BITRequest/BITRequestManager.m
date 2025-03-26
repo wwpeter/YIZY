@@ -29,6 +29,7 @@
 #import "BITCommonMacro.h"
 #import "SVProgressHUD.h"
 #import "MJExtension/MJExtension.h"
+#import "GetAddressIPManager.h"
 
 #define PrivateKey @"MIIBOgIBAAJBAMfnMMXYp6EGUF2TiWMGvSC4f6hYt0NC+2GQaxeXOjv+y7MH4DFKwKv6v+pd6kQGDII6rsr5Xnr2a4jGYvV99I0CAwEAAQJBAMe8PkVQpp0DvATjx2BEeXBaKGNC0UnJgXcIX5igp7UMqtWhJWHUv/gtmd6aLVUJ+RNThUszkJyFOkpQ6/asjYECIQDjHO9TvFe2C9v1zLhfwct6T+LyrAs0AvOyrIs42SmXEQIhAOFURK7BNP68rz6KAFm6uS7KEyUIVoqsN+VEDdpF5J29AiBYAfpsBGwoy2etVGuOD9b9yr8zMqAUw6AT+PDqUpzfQQIgS5FyU1VSi5gGAahQg8c+cbWtg/7u3yTwvf/70VcdW9UCIG+4wWFD/mAJU1boQIBrDJROzz23QzhyOEEZZ04OLokt"
  
@@ -149,7 +150,7 @@ static NSString *const bocKeys = @"c6091428885d59621768176088293d95";
     } else if (requestApi.requestSerializerType == BITRequestSerializerTypeJSON) {
         requestSerializer = [AFJSONRequestSerializer serializer];
     }
-    [requestSerializer setValue:Token forHTTPHeaderField:@"token"];
+//    [requestSerializer setValue:Token forHTTPHeaderField:@"token"];
     NSLog(@"Token = %@",Token);
     [requestSerializer setValue:@"app" forHTTPHeaderField:@"client"];
     [requestSerializer setValue:@"ios" forHTTPHeaderField:@"platform"];
@@ -162,29 +163,14 @@ static NSString *const bocKeys = @"c6091428885d59621768176088293d95";
         [requestSerializer setValue:phone_sys_version forHTTPHeaderField:@"phone-sys-version"];
     }
     
-    //语言
-
-    NSString *languageCode = [self getCurrentLanguageCode];
-    NSLog(@"当前语言版本代码：%@", languageCode);
- 
-    if ([languageCode isEqualToString:@"zh-Hans-CN"]) {
-        NSString *lang = @"zh-CN";
-        [requestSerializer setValue:lang forHTTPHeaderField:@"lang"];
-    } else {
-        NSString *lang = @"en-US";
-        [requestSerializer setValue:lang forHTTPHeaderField:@"lang"];
-    }
-  
-    //地区
-    NSString *iot_instance = @"china";
-    [requestSerializer setValue:iot_instance forHTTPHeaderField:@"iot-instance"];
-
+//    const NSString * deviceName = [WTSDeviceDataLibrery getDeviceName];
     NSString * deviceName = [FFDeviceName getDeviceName];
     NSLog(@"deviceName = %@",deviceName);
     if (!wts_IsStrEmpty(deviceName)) {
         // url 编码 处理汉字问题
 //        NSString *encodeUrl = [deviceName stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLPathAllowedCharacterSet];
         [requestSerializer setValue:deviceName forHTTPHeaderField:@"phone-model"];
+//        [requestSerializer setValue:deviceName forKey:@"phone-model"];
     }
     [requestSerializer setValue:@"app" forHTTPHeaderField:@"client-name"];
     NSString *deviceId = [WTSConfigManager getDeviceId];
@@ -196,35 +182,62 @@ static NSString *const bocKeys = @"c6091428885d59621768176088293d95";
     [requestSerializer setValue:phone_sys_version forHTTPHeaderField:@"systemVersion"];
     
 #pragma mark - wangyuexin
-    [requestSerializer setValue:[IPAddress getIPAddress:YES] forHTTPHeaderField:@"ip"];
+    NSString *IP = [[GetAddressIPManager sharedInstance] getMyIP];
+    if (IP == nil || [IP isEqualToString:@""]) {
+        [requestSerializer setValue:[IPAddress getIPAddress:YES] forHTTPHeaderField:@"ip"];
+    } else {
+        [requestSerializer setValue:IP forHTTPHeaderField:@"ip"];
+    }
  
-    NSString *bodyStr = [requestApi.params mj_JSONString];
+    NSString *bodyStr = [requestApi.params jsonString];
+    //AES加密
+    bodyStr = [AESUtil aesEncrypt: bodyStr];
     //对上述加密后密文进行SHA256withRSA签名算法进行签名
+//    NSString *signStr = [bodyStr hmacSHA256StringWithKey:PUBLICKEY];
     NSString *signStr = [RSAEncryptor sign:bodyStr withPriKey:PrivateKey];//RAS私钥签名
-    NSLog(@"signStr  =%@",signStr);
-    [requestSerializer setValue:signStr forHTTPHeaderField:@"sx-sign-v"];
+//    NSLog(@"bodyStr = %@ ,signStr  =%@",bodyStr,signStr);
+    [requestSerializer setValue:signStr forHTTPHeaderField:@"hht-sign"];
     
-//    long long visitTime = [[BITSingleObject sharedInstance] getNowTime];
-//    NSString *timestamp = [NSString stringWithFormat:@"%lld", visitTime];
-//    [requestSerializer setValue:timestamp forHTTPHeaderField:@"sdj-timestampe"];//请求unix时间戳
+//    [requestSerializer setValue:@"1234" forHTTPHeaderField:@"hht-sign"];
+    
+    [requestSerializer setValue:ChannelID forHTTPHeaderField:@"hht-channel-code"];//请求渠道
+    
+    long long visitTime = [[BITSingleObject sharedInstance] getNowTime];
+    NSString *timestamp = [NSString stringWithFormat:@"%lld", visitTime];
+    [requestSerializer setValue:timestamp forHTTPHeaderField:@"hht-timestampe"];//请求unix时间戳
     
     NSString *version = [WTSConfigManager getAppVersion];
     [requestSerializer setValue:version forHTTPHeaderField:@"version"];
-   
-//    [requestSerializer setValue:@"Bearer" forHTTPHeaderField:@"Authorization"];
-//    NSString *authorizationStr = wts_getObjectFromUserDefault(@"Authorization");
-//    if (!wts_IsStrEmpty(authorizationStr)) {
-//        [requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@",authorizationStr] forHTTPHeaderField:@"Authorization"];
+//    if ([AppChannel isEqualToString:@"0"]) {
+    //zuwu
+        [requestSerializer setValue:@"001" forHTTPHeaderField:@"channelId"];//请求渠道
+//    }else{
+//
 //    }
-//    
-//    
-//    NSString *um_device_token = wts_getObjectFromUserDefault(@"um_device_token");
-//    if (!wts_IsStrEmpty(um_device_token)) {
-//        [requestSerializer setValue:um_device_token forHTTPHeaderField:@"um-device-token"];
-//    }
+//    // 1表示趣发圈，2表示截图侠
+//    [requestSerializer setValue:@"1" forHTTPHeaderField:@"appid"];
+    
+    [requestSerializer setValue:@"Bearer" forHTTPHeaderField:@"Authorization"];
+    NSString *authorizationStr = wts_getObjectFromUserDefault(@"Authorization");
+    if (!wts_IsStrEmpty(authorizationStr)) {
+        [requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@",authorizationStr] forHTTPHeaderField:@"Authorization"];
+    }
+    
+    
+    NSString *um_device_token = wts_getObjectFromUserDefault(@"um_device_token");
+    if (!wts_IsStrEmpty(um_device_token)) {
+        [requestSerializer setValue:um_device_token forHTTPHeaderField:@"um-device-token"];
+    }
     
     [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 
+    // 添加默认的请求头 只支字符串
+    // 经纬度
+    // 如果可以定位
+//    NSString *longitudeNum = [NSString stringWithFormat:@"%f",[WTSLocationManager standardLocation].currentLocation.coordinate.longitude];
+//    [requestSerializer setValue:wts_NoNilString(longitudeNum) forHTTPHeaderField:@"lng"];
+//    NSString *latitudeNum = [NSString stringWithFormat:@"%f",[WTSLocationManager standardLocation].currentLocation.coordinate.latitude];
+//    [requestSerializer setValue:wts_NoNilString(latitudeNum) forHTTPHeaderField:@"lat"];
     // 添加特殊业务请求参数
     NSInteger businessHeadType = [BITSingleObject sharedInstance].businessHeadType;
     switch (businessHeadType) {
@@ -244,16 +257,51 @@ static NSString *const bocKeys = @"c6091428885d59621768176088293d95";
         default:
             break;
     }
-//    
-//    NSString *token = Token;
-//    if (token && ([token isKindOfClass:[NSString class]]) &&(token.length > 0)) {
-//        [requestSerializer setValue:token forHTTPHeaderField:@"sx-token"];
-//
-//    }
-//    else {
-//        [requestSerializer setValue:@"" forHTTPHeaderField:@"sx-token"];
-//
-//    }
+    
+    //token
+//    NSString *token = [BITSingleObject sharedInstance].token;
+//    [[NSUserDefaults standardUserDefaults] valueForKey:@"loginToken"];
+    NSString *token = Token;
+    if (token && ([token isKindOfClass:[NSString class]]) &&(token.length > 0))
+    {
+        [requestSerializer setValue:token forHTTPHeaderField:@"hht-token"];
+//        //获取到外界设置进来的参数字典
+//        NSMutableDictionary *paramsDic = [NSMutableDictionary dictionary];
+//        [[BITRequestConfig sharedConfig].extraBuiltinParameterHandlers enumerateObjectsUsingBlock:^(ExtraBuiltinParametersHandler obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//            NSDictionary *result = obj();
+//            if (result && [result isKindOfClass:[NSDictionary class]]) {
+//                [paramsDic addEntriesFromDictionary:result];
+//            }
+//        }];
+//        if ([paramsDic containKey:@"visitTime"]) {
+//            long long visitTime = [[paramsDic safeObjectForKey:@"visitTime"] longLongValue];
+//            if(visitTime > 0 && [BITSingleObject sharedInstance].isUpateLocalServerDifferenceTime)
+//             {
+//                 NSString *key = [BITSingleObject getDecodeKeyWithVisitTime:[NSString stringWithFormat:@"%lld", visitTime]];
+//                 if(!IsEmptyString(key))
+//                 {
+//                     [requestSerializer setValue:key forHTTPHeaderField:@"key"];
+//                 }
+//                 else
+//                 {
+//                     [requestSerializer setValue:@"" forHTTPHeaderField:@"key"];
+//                 }
+//            }
+//            else
+//            {
+//                [requestSerializer setValue:@"" forHTTPHeaderField:@"key"];
+//            }
+//        }
+//        else
+//        {
+//            [requestSerializer setValue:@"" forHTTPHeaderField:@"key"];
+//        }
+    }
+    else
+    {
+        [requestSerializer setValue:@"" forHTTPHeaderField:@"hht-token"];
+//        [requestSerializer setValue:@"" forHTTPHeaderField:@"key"];
+    }
     requestSerializer.timeoutInterval = requestApi.timeoutInterval;
     
     return requestSerializer;
@@ -519,57 +567,129 @@ constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))constructingBlock
     Unlock();
     double costTime = (CFAbsoluteTimeGetCurrent() - requestStartTime.doubleValue) * 1000;
     //重新设置requestApi的请求参数
+//    NSDictionary *requestParams = [self generateRequestParams:requestApi updateFlag:NO];
     id requestParams = requestApi.params;
-
-    NSString *bodyStr = [requestApi.params mj_JSONString];
+//    LogDebug(@"task.url : %@ [%@ms];\ncurrentRequest.allHTTPHeaderFields:%@;\nresponseObject:%@, body:%@", [NSString stringWithFormat:@"%@", task.currentRequest.URL], @(costTime),task.currentRequest.allHTTPHeaderFields,responseObject, requestApi.params, requestParams);
+    NSString *bodyStr = [requestApi.params jsonString];
     //AES加密
     bodyStr = [AESUtil aesEncrypt: bodyStr];
 
-    LogDebug(@"url : %@;\n HTTPMethod:%@;\n header:%@;\n responseObject:%@ \n body:%@,bodyStr = %@",task.currentRequest.URL,task.currentRequest.HTTPMethod,task.currentRequest.allHTTPHeaderFields,responseObject,requestApi.params,bodyStr);
-    
-    NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-    
-    NSString *decryptResult = [AESUtil aesDecrypt:result];
-    
-    //
-    NSLog(@"%@",decryptResult);
-    
-    NSData *jsonDataDec = [decryptResult dataUsingEncoding:NSUTF8StringEncoding];
-    NSString *jsonStr = decryptResult;
-    NSDictionary *responeDic = nil;
-    //Json解析
-    if (jsonDataDec) {
-        responeDic = [NSJSONSerialization JSONObjectWithData:jsonDataDec options:NSJSONReadingMutableContainers error:nil];
-        NSLog(@"从服务器获取到数据：%@--",responeDic);
-    }
+    //对上述加密后密文进行SHA256withRSA签名算法进行签名
+    NSString *signStr = [RSAEncryptor sign:bodyStr withPriKey:PrivateKey];
+//    [bodyStr hmacSHA256StringWithKey:];
+//    NSLog(@"bodyStr = %@ ,signStr  =%@",bodyStr,signStr);
+    LogDebug(@"url : %@;\n HTTPMethod:%@;\n header:%@;\n responseObject:%@ \n body:%@,bodyStr = %@", task.currentRequest.URL,task.currentRequest.HTTPMethod,task.currentRequest.allHTTPHeaderFields,responseObject,requestApi.params,bodyStr);
 
+    if (isDownload) {
+        if (error) {
+            if (completeHandler) {
+                completeHandler(nil, [self checkLogoutError:error]);
+            }
+        } else {
+            completeHandler(@{@"data":@{@"filePath":responseObject?responseObject:@""}}, nil);
+        }
+        return;
+    }
+//    NSDictionary *jsonDic = [NSDictionary dictionary];
     id jsonDic;
     NSError * __autoreleasing serializationError = nil;
     NSError *__autoreleasing defaultError = nil;
     if ([responseObject isKindOfClass:[NSData class]]) {
-        NSDictionary *resultDic = responeDic;
-        if ([resultDic isKindOfClass:[NSDictionary class]]) {
-            jsonDic = resultDic;
+       id jsonData = [self.jsonResponseSerializer responseObjectForResponse:task.response data:responseObject error:&serializationError];
+        if ([jsonData isKindOfClass:[NSDictionary class]]) {
+            jsonDic = jsonData;
         }
     } else if ([responseObject isKindOfClass:[NSDictionary class]]) {
         jsonDic = responseObject;
+    } else {
+       
     }
-    
+//    if ([responseObject isKindOfClass:[NSData class]]) {
+//       id jsonData = [self.jsonResponseSerializer responseObjectForResponse:task.response data:responseObject error:&serializationError];
+//        if ([jsonData isKindOfClass:[NSDictionary class]]) {
+//            if ([jsonData[@"code"] integerValue] == 200) {
+////                if (isEmptyDict(jsonData[@"data"])) {
+////                    jsonDic = jsonData;
+////                }else{
+////                    jsonDic = jsonData[@"data"];
+////                }
+//                if ([jsonData[@"data"] isKindOfClass:[NSDictionary class]]) {
+//                    if (isEmptyDict(jsonData[@"data"])) {
+//                        jsonDic = jsonData;
+//                    }else{
+//                        jsonDic = jsonData[@"data"];
+//                    }
+//                }
+//                else if ([jsonData[@"data"] isKindOfClass:[NSArray class]]){
+//                    jsonDic = jsonData;
+//                }else if([jsonData[@"data"] isKindOfClass:[NSString class]]){
+//                    jsonDic = jsonData;
+//                }
+//
+//            }else{
+////                if ([jsonData[@"code"] integerValue] == 200) {
+//                    jsonDic = jsonData;
+//                    [[BITNoticeView currentNotice] showErrorNotice:getNotNilString(jsonData[@"msg"])];
+//
+//                    [self hiddenHub];
+////                }
+////                return;
+//            }
+//
+//        }
+//    } else
+//        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+//        if ([responseObject[@"code"] integerValue] == 200) {
+//            if ([responseObject[@"data"] isKindOfClass:[NSDictionary class]]) {
+//                if (isEmptyDict(responseObject[@"data"])) {
+//                    jsonDic = responseObject;
+//                }else{
+//                    jsonDic = responseObject;
+//                }
+//            }
+//            else if ([responseObject[@"data"] isKindOfClass:[NSArray class]]){
+//                jsonDic = responseObject;
+//            }else if([responseObject[@"data"] isKindOfClass:[NSString class]]){
+//                jsonDic = responseObject;
+//            }
+//
+//        }else{
+////            if ([responseObject[@"code"] integerValue] == 200) {
+//                jsonDic = responseObject;
+//                [[BITNoticeView currentNotice] showErrorNotice:getNotNilString(responseObject[@"msg"])];
+//////            if ([responseObject[@"code"] integerValue] == 200) {
+//////                <#statements#>
+//////            }
+//                [self hiddenHub];
+////            }
+//
+////            return;
+//        }
+//    } else {
+//
+//    }
     if (error) {
         defaultError = error;
         LogDebug(@"error.code:%ld\n error.userInfo:%@\n error:%@\n error.domain:%@\n", (long)(error.code),error.userInfo, error,error.domain);
         
     } else if (serializationError) {
-//        defaultError = serializationError;
-//        [self hiddenHub];
+        defaultError = serializationError;
+        [self hiddenHub];
     } else {
-    
-        id jsonCode = [jsonDic safeObjectForKey:@"returnCode"];
+        
+        id head = [jsonDic safeObjectForKey:@"head"];
+        id jsonCode = [head safeObjectForKey:@"returnCode"];
+//        id  success =[jsonDic safeObjectForKey:@"success"];
+//        id  data =[jsonDic safeObjectForKey:@"data"];
+  
+//        if(jsonCode &&  data)
         if(jsonCode)
         {
             NSMutableDictionary *dic = [self processWithJsonDic:jsonDic defaultError:defaultError];
             defaultError = dic[@"defaultError"];
             jsonDic = dic[@"jsonDic"];
+//            jsonDic = [jsonDic safeObjectForKey:@"body"];
+            
         }
         else if([jsonDic safeObjectForKey:@"returnFlag"])
         {
@@ -586,7 +706,7 @@ constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))constructingBlock
     }
     defaultError = [self handleErrorCode:defaultError];
     if (completeHandler) {
-        completeHandler(jsonStr, defaultError);
+        completeHandler(jsonDic, defaultError);
     }
 }
 /**

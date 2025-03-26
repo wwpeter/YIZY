@@ -35,23 +35,23 @@ class ConnectionAlertView: UIView {
         let param = ["time":""] as [String : String]
         
         //kStatuPath
-        NetworkRequestManager.sharedInstance().requestPath(kCustomerInfo, withParam: param) { [weak self] result in
-            printLog(result)
-            //变成字典
-            
-          
-                let dic = JSONHelper.exchangeDic(jsonStr: result)
-                let phone = dic["phone"]
-                let email = dic["email"]
-                let url = dic["url"]
-//                self?.itemOne.exchangeCenterTitle(<#T##title: String##String#>)
-                self?.itemTwo.exchangeTitle("hote_line".sx_T, phone as? String ?? "")
-                self?.itemThree.exchangeTitle("official_website".sx_T, url as? String ?? "")
-     
-          
-        } failure: { error in
-            
-        }
+//        NetworkRequestManager.sharedInstance().requestPath(kCustomerInfo, withParam: param) { [weak self] result in
+//            printLog(result)
+//            //变成字典
+//            
+//          
+//                let dic = JSONHelper.exchangeDic(jsonStr: result)
+//                let phone = dic["phone"]
+//                let email = dic["email"]
+//                let url = dic["url"]
+////                self?.itemOne.exchangeCenterTitle(<#T##title: String##String#>)
+//                self?.itemTwo.exchangeTitle("hote_line".sx_T, phone as? String ?? "")
+//                self?.itemThree.exchangeTitle("official_website".sx_T, url as? String ?? "")
+//     
+//          
+//        } failure: { error in
+//            
+//        }
     }
     // initializa
     func initViews() {

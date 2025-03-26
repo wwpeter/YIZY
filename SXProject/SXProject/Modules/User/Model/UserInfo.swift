@@ -125,7 +125,7 @@ struct UserInfo: HandyJSON {
     func userDetail() {
         let token = getUserDefault(key: "access_token")
         let param = ["token": token]
-        NetworkRequestManager.sharedInstance().requestPath(kUserDetail, withParam: param) { result in
+        NetworkRequestManager.sharedInstance().requestPath(kQueryUserOrderInfo, withParam: param) { result in
             printLog(result)
             let detailStr = result.sx.base64Encoded
             setUserDefault(key: "userDetail", value: detailStr ?? "")

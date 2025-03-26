@@ -9,7 +9,18 @@
 #define URLDefine_h
 
 //RSA 秘钥
-#define PrivateKey @"MIIBOgIBAAJBAMfnMMXYp6EGUF2TiWMGvSC4f6hYt0NC+2GQaxeXOjv+y7MH4DFKwKv6v+pd6kQGDII6rsr5Xnr2a4jGYvV99I0CAwEAAQJBAMe8PkVQpp0DvATjx2BEeXBaKGNC0UnJgXcIX5igp7UMqtWhJWHUv/gtmd6aLVUJ+RNThUszkJyFOkpQ6/asjYECIQDjHO9TvFe2C9v1zLhfwct6T+LyrAs0AvOyrIs42SmXEQIhAOFURK7BNP68rz6KAFm6uS7KEyUIVoqsN+VEDdpF5J29AiBYAfpsBGwoy2etVGuOD9b9yr8zMqAUw6AT+PDqUpzfQQIgS5FyU1VSi5gGAahQg8c+cbWtg/7u3yTwvf/70VcdW9UCIG+4wWFD/mAJU1boQIBrDJROzz23QzhyOEEZZ04OLokt"
+#define PrivateKey @"MIIBVAIBADANBgkqhkiG9w0BAQEFAASCAT4wggE6AgEAAkEAx+cwxdinoQZQXZOJYwa9ILh/qFi3Q0L7YZBrF5c6O/7LswfgMUrAq/q/6l3qRAYMgjquyvleevZriMZi9X30jQIDAQABAkEAx7w+RVCmnQO8BOPHYER5cFooY0LRScmBdwhfmKCntQyq1aElYdS/+C2Z3potVQn5E1OFSzOQnIU6SlDr9qyNgQIhAOMc71O8V7YL2/XMuF/By3pP4vKsCzQC87KsizjZKZcRAiEA4VRErsE0/ryvPooAWbq5LsoTJQhWiqw35UQN2kXknb0CIFgB+mwEbCjLZ61Ua44P1v3KvzMyoBTDoBP48OpSnN9BAiBLkXJTVVKLmAYBqFCDxz5xta2D/u7fJPC9//vRVx1b1QIgb7jBYUP+YAlTVuhAgGsMlE7PPbdDOHI4QRlnTg4uiS0="
+
+/*
+ AES Key：97uoohEb3LtlRQqS
+ SHA256withRSA Key：MIIBVAIBADANBgkqhkiG9w0BAQEFAASCAT4wggE6AgEAAkEAx+cwxdinoQZQXZOJYwa9ILh/qFi3Q0L7YZBrF5c6O/7LswfgMUrAq/q/6l3qRAYMgjquyvleevZriMZi9X30jQIDAQABAkEAx7w+RVCmnQO8BOPHYER5cFooY0LRScmBdwhfmKCntQyq1aElYdS/+C2Z3potVQn5E1OFSzOQnIU6SlDr9qyNgQIhAOMc71O8V7YL2/XMuF/By3pP4vKsCzQC87KsizjZKZcRAiEA4VRErsE0/ryvPooAWbq5LsoTJQhWiqw35UQN2kXknb0CIFgB+mwEbCjLZ61Ua44P1v3KvzMyoBTDoBP48OpSnN9BAiBLkXJTVVKLmAYBqFCDxz5xta2D/u7fJPC9//vRVx1b1QIgb7jBYUP+YAlTVuhAgGsMlE7PPbdDOHI4QRlnTg4uiS0=
+ */
+
+/*
+参数加密顺序
+1、将参数转json后，使用AES加密，放入接口请求体body用于请求参数
+2、接口签名sign，将AES加密后的内容再次使用SHA256withRSA进行签名
+3、将SHA256withRSA签名后的内容放入请求头的hht-sign内*/
 
 #define Lock()   dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
 #define Unlock() dispatch_semaphore_signal(_semaphore)
@@ -33,16 +44,21 @@
 //#define kBaseURL @"http://marvel-sit.booleancloud.cn"
 //#define kBaseURL @"http://marvel-dev.booleancloud.cn"
 
-#define SX_WebBaseUrl  @"http://app_web.cloudsmart.store/"
+#define SX_WebBaseUrl  @"https://www.yizhiyong.com.cn"
 
 // 0测试|1开发环境 2生产环境
 // 获取标准的 UserDefaults 实例
 
-#define HostDisUrl  [[NSUserDefaults standardUserDefaults] boolForKey:@"httpUrl"]
+//#define HostDisUrl  [[NSUserDefaults standardUserDefaults] boolForKey:@"httpUrl"]
+#define HostDisUrl  ENVIRONMENT
 
 // 0测试|1生产环境
-#define kBaseURL HostDisUrl? NSLocalizedString(@"http://marvel-dev.booleancloud.cn", @""): NSLocalizedString(@"http://marvel-sit.booleancloud.cn", @"")
+#define kBase HostDisUrl? NSLocalizedString(@"https://www.yizhiyong.com.cn", @""):NSLocalizedString(@"https://www.yizhiyong.com.cn", @"")
+// 0测试|1生产环境
+#define kBaseURL HostDisUrl? NSLocalizedString(@"https://www.yizhiyong.com.cn", @""):NSLocalizedString(@"https://www.yizhiyong.com.cn", @"")
 
+//获取IP新接口
+#define kBaseURLIP HostDisUrl? NSLocalizedString(@"https://map.haoyit.cn/api/ip/get", @""):NSLocalizedString(@"http://map-sit.haoyit.cn/api/ip/get", @"")
 /*******************************************************************************************/
 
 #elif ENVIRONMENT == 1
@@ -50,17 +66,17 @@
 /* ************************  发布正式服务器接口地址  *********************************** */
 
 //192.168.2.162:18081/
-#define kBaseURL @"http://marvel.booleancloud.cn"
+#define kBaseURL @"https://www.yizhiyong.com.cn"
 
-#define SX_WebBaseUrl  @"http://app_web.cloudsmart.store/"
+#define SX_WebBaseUrl  @"https://www.yizhiyong.com.cn"
 
 /*******************************************************************************************/
 
+
+
+
 #endif
-/* ************************  设备添加相关接口  *********************************** */
-//设备添加成功时候的状态
+
 #define SX_AddDeviceStatus @"app/device/management/queryWifiConfigRecord"
-
-
 
 #endif /* URLDefine_h */

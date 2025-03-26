@@ -79,12 +79,7 @@
         @"deviceName" : @"bueryun12345678"
       };
     
-    [[NetworkRequestManager sharedInstance] requestPath:SX_AddDeviceStatus withParam:param Success:^(id  _Nonnull responseObject) {
-        NSLog(@"最终用的 服务数据： %@",responseObject);
-        NSLog(@"wwwww");
-    } Failure:^(NSError * _Nullable error) {
-        NSLog(@"%@",error.userInfo);
-    }];
+ 
 }
 
 - (void)dealData {
