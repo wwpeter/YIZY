@@ -55,7 +55,7 @@ class AlertViewFillFirst: UIView {
         }
         closeBut.snp.makeConstraints { make in
             make.width.height.equalTo(sxDynamic(24))
-            make.right.equalTo(contentView.snp.right).offset(sxDynamic(20))
+            make.right.equalTo(contentView.snp.right).offset(sxDynamic(-20))
             make.top.equalTo(contentView.snp.top).offset(sxDynamic(15))
         }
         titleLabel.snp.makeConstraints { make in

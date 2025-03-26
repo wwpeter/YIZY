@@ -13,12 +13,35 @@ class UnderReviewVC: ViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        initViews()
+        config()
     }
     
     func initViews() {
         view.addSubview(centerImg)
         view.addSubview(titleLabel)
         view.addSubview(backBut)
+        initViewLayouts()
+    }
+    
+    func initViewLayouts() {
+        centerImg.snp.makeConstraints { make in
+            make.width.equalTo(sxDynamic(185))
+            make.height.equalTo(sxDynamic(sxDynamic(100)))
+            make.top.equalTo(view.snp.top).offset(sxDynamic(260))
+            make.centerX.equalTo(view.snp.centerX)
+        }
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(centerImg.snp.bottom).offset(sxDynamic(50))
+            make.centerX.equalTo(view.snp.centerX)
+        }
+        backBut.snp.makeConstraints { make in
+            make.width.equalTo(sxDynamic(90))
+            make.height.equalTo(sxDynamic(sxDynamic(40)))
+            make.top.equalTo(titleLabel.snp.bottom).offset(sxDynamic(30))
+            make.centerX.equalTo(view.snp.centerX)
+        }
     }
     
     func config() {

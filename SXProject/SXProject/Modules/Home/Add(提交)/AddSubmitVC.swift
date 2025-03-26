@@ -36,13 +36,13 @@ class AddSubmitVC: ViewController, UITableViewDelegate, UITableViewDataSource {
     
     func config() {
         bottomView.submitBlock = { [weak self] in
-            let vc = UnderReviewVC()
-            
-            self?.navigationController?.pushViewController(vc, animated: true)
-            
-//            let vc = ApplicationDetailVC()
+//            let vc = UnderReviewVC()
 //            
 //            self?.navigationController?.pushViewController(vc, animated: true)
+            
+            let vc = ApplicationDetailVC()
+            
+            self?.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
