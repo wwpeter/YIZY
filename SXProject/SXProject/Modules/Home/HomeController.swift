@@ -55,7 +55,7 @@ class HomeController: ViewController, HomeTopViewDelegate {
     private lazy var bottomView: HomeBottomView = {
         let view = HomeBottomView()
   
-        view.frame = CGRectMake(0, sxDynamic(472) + kTopBarHeight, kSizeScreenWidth, sxDynamic(163))
+        view.frame = CGRectMake(sxDynamic(20), sxDynamic(472) + kTopBarHeight, kSizeScreenWidth - sxDynamic(40), sxDynamic(163))
         
         return view
     }()

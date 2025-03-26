@@ -31,6 +31,7 @@ class HomeBottomView: UIView {
     
     //MARK: - initialize
     func initViews() {
+        
         addSubview(groundView)
         groundView .addSubview(topView)
         groundView.addSubview(titleLabel)
@@ -78,7 +79,8 @@ class HomeBottomView: UIView {
     private lazy var topView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = sxDynamic(16)
-        view.frame = CGRectMake(sxDynamic(20), 0, kSizeScreenWidth - sxDynamic(40), sxDynamic(52))
+        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        view.frame = CGRectMake(0, 0, kSizeScreenWidth - sxDynamic(40), sxDynamic(52))
         view.sx.gradientColor(AssetColors.tfbf4E5.color, AssetColors.bfff.color, CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 1))
         view.clipsToBounds = true
         
@@ -88,6 +90,8 @@ class HomeBottomView: UIView {
     private lazy var groundView: UIView = {
         let view = UIView ()
         view.layer.cornerRadius = sxDynamic(16)
+        view.clipsToBounds = true
+        view.backgroundColor = .white
         
         
         return view
