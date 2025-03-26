@@ -33,6 +33,8 @@ class SendCodeVC: ViewController {
         view.addSubview(codeSecond)
         
         initViewLayouts()
+        
+        startCountdown()
     }
     
     func initViewLayouts() {
@@ -66,8 +68,8 @@ class SendCodeVC: ViewController {
                 self?.codeSecond.isHidden = false
                 self?.codeBut.isHidden = true
                 print("倒计时: \(String(describing: self?.countdownSeconds))秒")
-                let tempStr = "iot_regist_code_send".sx_T
-                self?.codeSecond.text = String.init(format: "%ld%@", self?.countdownSeconds ?? 0, tempStr)
+                let tempStr = "重新发送".sx_T
+                self?.codeSecond.text = String.init(format: "%@%ld\("s")", self?.countdownSeconds ?? 0, tempStr)
             } else {
                 // 倒计时结束
                 timer.invalidate()
@@ -155,6 +157,7 @@ class SendCodeVC: ViewController {
         let but = UIButton.init(type: .custom)
         but.titleLabel?.font = UIFont.sx.font_t13
         but.setTitle("重新发送", for: .normal)
+        but.isHidden = true
      
         but.setTitleColor(kTBlue, for: .normal)
         but.addTarget(self, action: #selector(codeClick(button:)), for: .touchUpInside)
