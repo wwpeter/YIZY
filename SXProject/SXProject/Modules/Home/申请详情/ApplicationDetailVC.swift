@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ApplicationDetailVC: UIViewController {
+class ApplicationDetailVC: ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

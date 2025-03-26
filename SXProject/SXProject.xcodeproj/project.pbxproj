@@ -16,6 +16,7 @@
 		4A2DF2B12D93DB9C007EC0CD /* GetAddressIPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DF2AF2D93DB9C007EC0CD /* GetAddressIPManager.m */; };
 		4A2DF2B42D93DBEE007EC0CD /* GaodeCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DF2B22D93DBEE007EC0CD /* GaodeCityModel.m */; };
 		4A2DF2B72D93E1CE007EC0CD /* LoginVC+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DF2B62D93E1CE007EC0CD /* LoginVC+Config.swift */; };
+		4A2DF2BD2D93EC37007EC0CD /* AddSubmitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DF2BC2D93EC37007EC0CD /* AddSubmitVC.swift */; };
 		4A3C698E2B980D1C00C5F2A9 /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3C698D2B980D1C00C5F2A9 /* TestVC.swift */; };
 		4A3C69942B98128E00C5F2A9 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3C69932B98128E00C5F2A9 /* TestView.swift */; };
 		4A3C699A2B98160300C5F2A9 /* CreateBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3C69992B98160200C5F2A9 /* CreateBaseView.swift */; };
@@ -293,6 +294,7 @@
 		4A2DF2B22D93DBEE007EC0CD /* GaodeCityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GaodeCityModel.m; sourceTree = "<group>"; };
 		4A2DF2B32D93DBEE007EC0CD /* GaodeCityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GaodeCityModel.h; sourceTree = "<group>"; };
 		4A2DF2B62D93E1CE007EC0CD /* LoginVC+Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC+Config.swift"; sourceTree = "<group>"; };
+		4A2DF2BC2D93EC37007EC0CD /* AddSubmitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubmitVC.swift; sourceTree = "<group>"; };
 		4A3C698D2B980D1C00C5F2A9 /* TestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
 		4A3C69932B98128E00C5F2A9 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		4A3C69992B98160200C5F2A9 /* CreateBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateBaseView.swift; sourceTree = "<group>"; };
@@ -640,6 +642,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A2DF2BB2D93EC12007EC0CD /* Add(提交) */ = {
+			isa = PBXGroup;
+			children = (
+				4A2DF2BC2D93EC37007EC0CD /* AddSubmitVC.swift */,
+			);
+			path = "Add(提交)";
+			sourceTree = "<group>";
+		};
 		4A46CABE2D5D863A003D3020 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -856,6 +866,7 @@
 		4A83F7EB2D2B789E00817DC5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				4A2DF2BB2D93EC12007EC0CD /* Add(提交) */,
 				4A78280D2D6B0FC3000D7E7C /* 申请详情 */,
 				4A78280A2D6B0D99000D7E7C /* Doing（审核中） */,
 				4A7828042D6B08ED000D7E7C /* AlertViews */,
@@ -1932,6 +1943,7 @@
 				4A8BE3352BD63207005D466E /* BITTextFieldProcess.m in Sources */,
 				4AA751382BA03DB90011D77C /* UIButtonEx.swift in Sources */,
 				4A8BE2A42BD60AAC005D466E /* BITCache.m in Sources */,
+				4A2DF2BD2D93EC37007EC0CD /* AddSubmitVC.swift in Sources */,
 				4AFF6BDB2B45115F008F8C7F /* BaseModel.swift in Sources */,
 				4A7828092D6B091D000D7E7C /* AlertViewFillSecond.swift in Sources */,
 				4A8BE3612BD63711005D466E /* BITNavigationBar.m in Sources */,

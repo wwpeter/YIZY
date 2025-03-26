@@ -19,6 +19,8 @@ class JKHelpVC: ViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func initViews() {
+        
+        SX_navTitle = "借款帮助"
         HelpJkCell.registerCell(tableView: myTableView)
         view.addSubview(myTableView)
       

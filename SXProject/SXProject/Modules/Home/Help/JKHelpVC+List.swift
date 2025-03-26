@@ -13,10 +13,10 @@ extension JKHelpVC {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: ProtocolCell.cellID()) as?  ProtocolCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: HelpJkCell.cellID()) as?  HelpJkCell {
             
             let tempArr = sourceData[indexPath.row]
-            cell.setTitle(title: tempArr[0], icon: tempArr[1])
+            cell.setTitle(title: tempArr[0], sub: tempArr[1])
             
             return cell
         }

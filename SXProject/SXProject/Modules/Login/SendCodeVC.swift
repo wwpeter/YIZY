@@ -20,6 +20,40 @@ class SendCodeVC: ViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        initViews()
+    }
+    
+    func initViews() {
+        codeUI()
+        
+        view.addSubview(titleLabel)
+        view.addSubview(subLabel)
+        
+        view.addSubview(codeBut)
+        view.addSubview(codeSecond)
+        
+        initViewLayouts()
+    }
+    
+    func initViewLayouts() {
+        titleLabel.snp.makeConstraints { make in
+            make.leading.equalTo(view.snp.leading).offset(sxDynamic(30))
+            make.top.equalTo(view.snp.top).offset(sxDynamic(60) + kTopBarHeight)
+        }
+        subLabel.snp.makeConstraints { make in
+            make.leading.equalTo(view.snp.leading).offset(sxDynamic(30))
+            make.top.equalTo(titleLabel.snp.bottom).offset(sxDynamic(10))
+        }
+        
+        codeBut.snp.makeConstraints { make in
+            make.top.equalTo(subLabel.snp.bottom).offset(sxDynamic(125))
+            make.trailing.equalTo(view.snp.trailing).offset(sxDynamic(-30))
+            
+        }
+        codeSecond.snp.makeConstraints { make in
+            make.top.equalTo(subLabel.snp.bottom).offset(sxDynamic(125))
+            make.trailing.equalTo(view.snp.trailing).offset(sxDynamic(-30))
+        }
     }
     
     //MAKR: - 验证码倒计时功能
