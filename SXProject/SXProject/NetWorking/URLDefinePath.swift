@@ -66,6 +66,8 @@ let kAddTransformPoint = "/hht/h5/userPoint/addTransformPoint"
 /// 订单相关接口
 /// 根据身份证号查询用户黑名单记录
 let kQueryBlackUserIdCard = "/hht/h5/user/queryBlackUserIdCard"
+/// 实名信息认证
+let kIdCardCredit = "/hht/h5/user/idCardCredit"
 
 ///字典控制器
 ///查询对应的模块
