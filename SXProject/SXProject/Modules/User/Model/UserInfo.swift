@@ -53,8 +53,11 @@ struct UserInfo: HandyJSON {
     
     ///删除用户
     func dealUser() {
-        delUserDefault(key: "userDetail")
-        delUserDefault(key: "access_token")
+        delUserDefault(key: "token")
+        delUserDefault(key: "userId")
+        delUserDefault(key: "showHhtPage")
+        delUserDefault(key: "hjfqPageUrl")
+        delUserDefault(key: "hhtPageUrl")
     }
     ///存储用户
     func getUser() {
@@ -108,7 +111,7 @@ struct UserInfo: HandyJSON {
     
     ///用户详情接口
     func userDetail() {
-        let token = getUserDefault(key: "access_token")
+        let token = getUserDefault(key: "token")
         let param = ["token": token]
         NetworkRequestManager.sharedInstance().requestPath(kQueryUserOrderInfo, withParam: param) { result in
             printLog(result)

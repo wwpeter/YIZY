@@ -19,6 +19,8 @@ class LoginVC: ViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         initViews()
         initViewLayouts()
+        
+        UserSingleton.shared.dealUser()
     }
     
     override func viewWillAppear(_ animated: Bool) {

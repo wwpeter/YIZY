@@ -676,6 +676,8 @@ constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))constructingBlock
              //滑动验证码已失效
              static final String CODE_96000016 = "96000016";
              */
+        } else if ([jsonCode isEqualToString:@"95000000"]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"kLoginOutNotification" object:nil];
         } else {
             [self showError:returnMessage];
         }

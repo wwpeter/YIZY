@@ -74,6 +74,7 @@ class BaseController: UIViewController {
         return .default
     }
     
+    
     /// 标题
     var SX_navTitle :String? {
         didSet {

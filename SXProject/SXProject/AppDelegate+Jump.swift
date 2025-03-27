@@ -18,10 +18,10 @@ extension AppDelegate {
     func checkLoginStatus() {
         goTabBar()
         
-        let token = getUserDefault(key: "access_token")
-//        if token.isEmpty {
-//            goLoginNew()
-//        }
+        let token = getUserDefault(key: "token")
+        if token.isEmpty {
+            goLoginNew()
+        }
     }
     
     /// 跳转登录

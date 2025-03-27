@@ -19,6 +19,12 @@ class MyController: ViewController, UITableViewDelegate, UITableViewDataSource {
         initViews()
         userDetail()
         config()
+       
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        UserSingleton.shared.userDetail()// 用户信息
     }
     
     func initViews() {
@@ -31,10 +37,11 @@ class MyController: ViewController, UITableViewDelegate, UITableViewDataSource {
         view.addSubview(myTableView)
         
         /// 临时进入 登录
-        let token = getUserDefault(key: "access_token")
-        if token.isEmpty {
-            goLoginNew()
-        }
+//        let token = getUserDefault(key: "access_token")
+//        if token.isEmpty {
+//            goLoginNew()
+//        }
+       
     }
     /// 跳转登录新
     @objc func goLoginNew() {
