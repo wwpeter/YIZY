@@ -597,7 +597,7 @@ constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))constructingBlock
     //重新设置requestApi的请求参数
 //    NSDictionary *requestParams = [self generateRequestParams:requestApi updateFlag:NO];
     id requestParams = requestApi.params;
-//    LogDebug(@"task.url : %@ [%@ms];\ncurrentRequest.allHTTPHeaderFields:%@;\nresponseObject:%@, body:%@", [NSString stringWithFormat:@"%@", task.currentRequest.URL], @(costTime),task.currentRequest.allHTTPHeaderFields,responseObject, requestApi.params, requestParams);
+//
     NSString *bodyStr = [requestApi.params jsonString];
     //AES加密
     bodyStr = [AESUtil aesEncrypt: bodyStr];
@@ -632,70 +632,7 @@ constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))constructingBlock
     } else {
        
     }
-//    if ([responseObject isKindOfClass:[NSData class]]) {
-//       id jsonData = [self.jsonResponseSerializer responseObjectForResponse:task.response data:responseObject error:&serializationError];
-//        if ([jsonData isKindOfClass:[NSDictionary class]]) {
-//            if ([jsonData[@"code"] integerValue] == 200) {
-////                if (isEmptyDict(jsonData[@"data"])) {
-////                    jsonDic = jsonData;
-////                }else{
-////                    jsonDic = jsonData[@"data"];
-////                }
-//                if ([jsonData[@"data"] isKindOfClass:[NSDictionary class]]) {
-//                    if (isEmptyDict(jsonData[@"data"])) {
-//                        jsonDic = jsonData;
-//                    }else{
-//                        jsonDic = jsonData[@"data"];
-//                    }
-//                }
-//                else if ([jsonData[@"data"] isKindOfClass:[NSArray class]]){
-//                    jsonDic = jsonData;
-//                }else if([jsonData[@"data"] isKindOfClass:[NSString class]]){
-//                    jsonDic = jsonData;
-//                }
-//
-//            }else{
-////                if ([jsonData[@"code"] integerValue] == 200) {
-//                    jsonDic = jsonData;
-//                    [[BITNoticeView currentNotice] showErrorNotice:getNotNilString(jsonData[@"msg"])];
-//
-//                    [self hiddenHub];
-////                }
-////                return;
-//            }
-//
-//        }
-//    } else
-//        if ([responseObject isKindOfClass:[NSDictionary class]]) {
-//        if ([responseObject[@"code"] integerValue] == 200) {
-//            if ([responseObject[@"data"] isKindOfClass:[NSDictionary class]]) {
-//                if (isEmptyDict(responseObject[@"data"])) {
-//                    jsonDic = responseObject;
-//                }else{
-//                    jsonDic = responseObject;
-//                }
-//            }
-//            else if ([responseObject[@"data"] isKindOfClass:[NSArray class]]){
-//                jsonDic = responseObject;
-//            }else if([responseObject[@"data"] isKindOfClass:[NSString class]]){
-//                jsonDic = responseObject;
-//            }
-//
-//        }else{
-////            if ([responseObject[@"code"] integerValue] == 200) {
-//                jsonDic = responseObject;
-//                [[BITNoticeView currentNotice] showErrorNotice:getNotNilString(responseObject[@"msg"])];
-//////            if ([responseObject[@"code"] integerValue] == 200) {
-//////                <#statements#>
-//////            }
-//                [self hiddenHub];
-////            }
-//
-////            return;
-//        }
-//    } else {
-//
-//    }
+
     if (error) {
         defaultError = error;
         LogDebug(@"error.code:%ld\n error.userInfo:%@\n error:%@\n error.domain:%@\n", (long)(error.code),error.userInfo, error,error.domain);
@@ -707,17 +644,13 @@ constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))constructingBlock
         
         id head = [jsonDic safeObjectForKey:@"head"];
         id jsonCode = [head safeObjectForKey:@"returnCode"];
-//        id  success =[jsonDic safeObjectForKey:@"success"];
-//        id  data =[jsonDic safeObjectForKey:@"data"];
-  
-//        if(jsonCode &&  data)
+        id returnMessage = [head safeObjectForKey:@"returnMessage"];
+
         if(jsonCode)
         {
             NSMutableDictionary *dic = [self processWithJsonDic:jsonDic defaultError:defaultError];
             defaultError = dic[@"defaultError"];
             jsonDic = dic[@"jsonDic"];
-//            jsonDic = [jsonDic safeObjectForKey:@"body"];
-            
         }
         else if([jsonDic safeObjectForKey:@"returnFlag"])
         {
@@ -731,12 +664,34 @@ constructingBodyWithBlock:(void (^)(id<AFMultipartFormData>))constructingBlock
             defaultError = dic[@"defaultError"];
             jsonDic = dic[@"jsonDic"];
         }
+        if ([jsonCode isEqualToString:@"000000"]) {
+            // 成功
+            /*
+             //请求成功
+             static final String CODE_000000 = "000000";
+             //无效的TOKEN
+             static final String CODE_95000000 = "95000000";
+             //登录信息失效，请重新登录
+             static final String CODE_95000015 = "95000015";
+             //滑动验证码已失效
+             static final String CODE_96000016 = "96000016";
+             */
+        } else {
+            [self showError:returnMessage];
+        }
     }
     defaultError = [self handleErrorCode:defaultError];
     if (completeHandler) {
         completeHandler(jsonDic, defaultError);
     }
 }
+- (void)showError:(NSString *)msg {
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+    [SVProgressHUD setImageViewSize:CGSizeMake(0, 0)];
+    [SVProgressHUD showErrorWithStatus:msg];
+    [SVProgressHUD dismissWithDelay:2.0];
+}
+
 
 -(NSMutableDictionary *)processBinGoWithJsonDic:(NSDictionary *)jsonDic
                                     defaultError:(NSError *)defaultError

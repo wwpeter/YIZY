@@ -169,6 +169,8 @@
 		4AC703552B3A8481001C065B /* SXProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC703542B3A8481001C065B /* SXProjectUITestsLaunchTests.swift */; };
 		4ACCDEF02BFCA212002E9049 /* MessageController+List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACCDEEF2BFCA211002E9049 /* MessageController+List.swift */; };
 		4ACCDEFB2BFDDF1B002E9049 /* MessageController+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACCDEFA2BFDDF1B002E9049 /* MessageController+Config.swift */; };
+		4AF157292D9560A400FB0AC9 /* SendCodeVC+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF157282D9560A400FB0AC9 /* SendCodeVC+Config.swift */; };
+		4AF1572D2D95631000FB0AC9 /* GetDeviceIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF1572C2D95631000FB0AC9 /* GetDeviceIP.swift */; };
 		4AFF6ADE2B44165E008F8C7F /* ZlReachabilityTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF6ADD2B44165E008F8C7F /* ZlReachabilityTool.swift */; };
 		4AFF6AF22B4416EE008F8C7F /* ZlActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF6AE82B4416EE008F8C7F /* ZlActionSheet.swift */; };
 		4AFF6AF32B4416EE008F8C7F /* ZlAlertTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF6AE92B4416EE008F8C7F /* ZlAlertTool.swift */; };
@@ -542,6 +544,8 @@
 		4AC703542B3A8481001C065B /* SXProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SXProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4ACCDEEF2BFCA211002E9049 /* MessageController+List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageController+List.swift"; sourceTree = "<group>"; };
 		4ACCDEFA2BFDDF1B002E9049 /* MessageController+Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageController+Config.swift"; sourceTree = "<group>"; };
+		4AF157282D9560A400FB0AC9 /* SendCodeVC+Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SendCodeVC+Config.swift"; sourceTree = "<group>"; };
+		4AF1572C2D95631000FB0AC9 /* GetDeviceIP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetDeviceIP.swift; sourceTree = "<group>"; };
 		4AFF6ADD2B44165E008F8C7F /* ZlReachabilityTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZlReachabilityTool.swift; sourceTree = "<group>"; };
 		4AFF6AE82B4416EE008F8C7F /* ZlActionSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZlActionSheet.swift; sourceTree = "<group>"; };
 		4AFF6AE92B4416EE008F8C7F /* ZlAlertTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZlAlertTool.swift; sourceTree = "<group>"; };
@@ -1600,6 +1604,8 @@
 				4A4D96802D0FF3A300FA6E7A /* LoginVC.swift */,
 				4A2DF2B62D93E1CE007EC0CD /* LoginVC+Config.swift */,
 				4A690F0D2D69D87F00768DC6 /* SendCodeVC.swift */,
+				4AF157282D9560A400FB0AC9 /* SendCodeVC+Config.swift */,
+				4AF1572C2D95631000FB0AC9 /* GetDeviceIP.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1997,6 +2003,7 @@
 				4A8BE28E2BD609AA005D466E /* BITRequestApi.m in Sources */,
 				4A8BE3392BD63207005D466E /* RSAUtil.m in Sources */,
 				4AFF6BA92B45115F008F8C7F /* Log.swift in Sources */,
+				4AF157292D9560A400FB0AC9 /* SendCodeVC+Config.swift in Sources */,
 				4A8BE28A2BD609A9005D466E /* BITLoadingView.m in Sources */,
 				4A2DF2EE2D954B23007EC0CD /* DsWebController.swift in Sources */,
 				4A46CADF2D5DDDB5003D3020 /* EmptyView.swift in Sources */,
@@ -2035,6 +2042,7 @@
 				4AFF6BB02B45115F008F8C7F /* MusicPlayerView.swift in Sources */,
 				4A8BE3602BD63711005D466E /* BITNavigationController.m in Sources */,
 				4AFF6B522B450A14008F8C7F /* Assets.swift in Sources */,
+				4AF1572D2D95631000FB0AC9 /* GetDeviceIP.swift in Sources */,
 				4AC1C1F02C4103650082AE8F /* ActivateFirstView.swift in Sources */,
 				4AFF6BEC2B45296D008F8C7F /* MessageController.swift in Sources */,
 				4A46CAE82D5DE953003D3020 /* BankListVC.swift in Sources */,

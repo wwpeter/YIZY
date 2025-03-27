@@ -20,11 +20,32 @@ extension LoginVC {
                 printLog(result)
                 
                 
-                _ = JSONHelper.exchangeDic(jsonStr: result)
+                let dic = JSONHelper.exchangeDic(jsonStr: result)
+              
+               
+                let vc = SendCodeVC()
+                vc.telephone = self?.textField.text ?? ""
+                
+                self?.navigationController?.pushViewController(vc, animated: true)
                 
             } failure: { error in
                 //            Toast.showInfoMessage("".sx_T)
             }
         }
+    }
+    
+    // MARK: - Delegate 键盘
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else {
+            return true
+        }
+        // 获取输入框的最新文本
+        let updatedText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? ""
+        
+        let textLength = text.count + string.count - range.length
+        
+        return textLength <= 11
+        
+    
     }
 }

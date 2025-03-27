@@ -15,6 +15,8 @@ class SendCodeVC: ViewController {
     var countdownSeconds = 60
     var timer: Timer?
     /// 使用代码创建一个View会调用该构造方法
+    ///  手机号
+    var telephone = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +47,7 @@ class SendCodeVC: ViewController {
         }
         subLabel.snp.makeConstraints { make in
             make.leading.equalTo(view.snp.leading).offset(sxDynamic(30))
+            make.trailing.equalTo(view.snp.trailing).offset(sxDynamic(-30))
             make.top.equalTo(titleLabel.snp.bottom).offset(sxDynamic(10))
         }
         
@@ -147,7 +150,7 @@ class SendCodeVC: ViewController {
             self.startCode = text
         }
         codeView.finishBlock = { (view: JHVerifyCodeView, code: String) -> () in
-        
+            self.goLogin()
           
         }
         codeView.tag = 100

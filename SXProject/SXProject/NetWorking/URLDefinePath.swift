@@ -14,6 +14,8 @@ import Foundation
  /yzyhome/agreement/signout/  注销协议
  /yzyhome/agreement/share/  个人信息共享授权协议
  */
+
+let kWebUrlBase = "https://www.yizhiyong.com.cn"
 ///注册协议 -- 这是H5 webview加载
 let kUserAgreement = "/yzyhome/agreement/user/"
 ///隐私协议

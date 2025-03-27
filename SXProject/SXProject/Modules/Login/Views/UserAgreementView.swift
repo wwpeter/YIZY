@@ -8,7 +8,10 @@
 import UIKit
 import WebKit
 
+typealias UserAgreementViewBlock = (_ agree: Bool) -> Void
 class UserAgreementView: UIView, WKNavigationDelegate {
+    
+    var agreeBlock: UserAgreementViewBlock?
     /// 使用代码创建一个View会调用该构造方法
     ///
     /// - Parameter frame: <#frame description#>
@@ -16,6 +19,7 @@ class UserAgreementView: UIView, WKNavigationDelegate {
         super.init(frame: frame)
         
         initViews()
+       
     }
     
     @available(*, unavailable)
@@ -29,23 +33,128 @@ class UserAgreementView: UIView, WKNavigationDelegate {
         self.initViewLayouts()
     }
     
+    func loadWebView(privacy: Bool) {
+        if privacy ==  true {
+            if let url = URL(string: String.init(format: "%@%@", kWebUrlBase, kPrivacyAgreement)) {
+                webView.load(URLRequest(url: url))
+            }
+            rightClick()
+        } else {
+            if let url = URL(string: String.init(format: "%@%@", kWebUrlBase, kUserAgreement)) {
+                webView.load(URLRequest(url: url))
+            }
+            leftClick()
+        }
+       
+  
+    }
+    
+    
     //MARK: - initialize
     func initViews() {
         addSubview(contentView)
-        contentView.addSubview(topView)
+        
+        contentView.addSubview(leftImg)
+        contentView.addSubview(rightImg)
+        contentView.addSubview(leftCtr)
+        
+        contentView.addSubview(leftTitle)
+        contentView.addSubview(rightLabel)
+        contentView.addSubview(rightCtr)
+        
+        contentView.addSubview(leftCtr)
+        contentView.addSubview(rightCtr)
+        
+//        contentView.addSubview(topView)
+//   
+    
+        
+        contentView.addSubview(webView)
         contentView.addSubview(bottomView)
+        
         contentView.addSubview(cancleBut)
         contentView.addSubview(submitBut)
     }
     
     func initViewLayouts() {
+        contentView.snp.makeConstraints { make in
+            make.top.equalTo(self.snp.top).offset(sxDynamic(88))
+            make.left.right.bottom.equalTo(0)
+        }
+        leftCtr.snp.makeConstraints { make in
+            make.height.equalTo(sxDynamic(54))
+            make.left.equalTo(contentView.snp.left)
+            make.right.equalTo(contentView.snp.centerX)
+            make.top.equalTo(contentView.snp.top)
+        }
+        rightCtr.snp.makeConstraints { make in
+            make.height.equalTo(sxDynamic(54))
+            make.left.equalTo(contentView.snp.centerX)
+            make.right.equalTo(contentView.snp.right)
+            make.top.equalTo(contentView.snp.top)
+        }
         
+        leftImg.snp.makeConstraints { make in
+            make.height.equalTo(sxDynamic(54))
+            make.left.equalTo(contentView.snp.left)
+            make.right.equalTo(contentView.snp.centerX)
+            make.top.equalTo(contentView.snp.top)
+        }
+        rightImg.snp.makeConstraints { make in
+            make.height.equalTo(sxDynamic(54))
+            make.left.equalTo(contentView.snp.centerX)
+            make.right.equalTo(contentView.snp.right)
+            make.top.equalTo(contentView.snp.top)
+        }
+        
+        leftTitle.snp.makeConstraints { make in
+            make.height.equalTo(sxDynamic(54))
+            make.left.equalTo(contentView.snp.left)
+            make.right.equalTo(contentView.snp.centerX)
+            make.top.equalTo(contentView.snp.top)
+        }
+        rightLabel.snp.makeConstraints { make in
+            make.height.equalTo(sxDynamic(54))
+            make.left.equalTo(contentView.snp.centerX)
+            make.right.equalTo(contentView.snp.right)
+            make.top.equalTo(contentView.snp.top)
+        }
+        
+        bottomView.snp.makeConstraints { make in
+            make.left.right.bottom.equalTo(0)
+            make.height.equalTo(sxDynamic(67))
+        }
+        cancleBut.snp.makeConstraints { make in
+            make.left.equalTo(contentView.snp.left)
+            make.right.equalTo(contentView.snp.centerX)
+            make.top.equalTo(bottomView.snp.top)
+            make.bottom.equalTo(bottomView.snp.bottom)
+        }
+        submitBut.snp.makeConstraints { make in
+            make.left.equalTo(contentView.snp.centerX)
+            make.right.equalTo(contentView.snp.right)
+            make.top.equalTo(bottomView.snp.top)
+            make.bottom.equalTo(bottomView.snp.bottom)
+        }
+        
+        deal()
+    }
+    
+    func deal() {
+        bottomView.layer.shadowColor = UIColor.black.cgColor
+        bottomView.layer.shadowOpacity = 0.5
+        bottomView.layer.shadowOffset = CGSize(width: 0, height: 5)
+        bottomView.layer.shadowRadius = 5
+        bottomView.layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+        bottomView.clipsToBounds = false // 关键！
     }
     
     // MAKR: - 事件
     @objc
     func click() {
    
+        guard let blockT = agreeBlock else {return}
+        blockT(true)
         
         self.dismiss()
     }
@@ -53,7 +162,8 @@ class UserAgreementView: UIView, WKNavigationDelegate {
     @objc
     func cancelClick() {
    
-        
+        guard let blockT = agreeBlock else {return}
+        blockT(false)
         self.dismiss()
     }
     
@@ -77,7 +187,61 @@ class UserAgreementView: UIView, WKNavigationDelegate {
         }
     }
     
+    @objc func leftClick() {
+        rightImg.isHidden = false
+        leftImg.isHidden = true
+        leftTitle.textColor = kT333
+        rightLabel.textColor = kTaaa
+    }
+    
+    @objc func rightClick() {
+        rightImg.isHidden = true
+        leftImg.isHidden = false
+        leftTitle.textColor = kTaaa
+        rightLabel.textColor = kT333
+    }
+    
     //MARK: - getter
+    
+    private lazy var leftCtr: UIControl = {
+        let ctr = UIControl()
+        ctr.addTarget(self, action: #selector(leftClick), for: .touchUpInside)
+        
+        return ctr
+    }()
+    private lazy var rightCtr: UIControl = {
+        let ctr = UIControl()
+        ctr.addTarget(self, action: #selector(rightClick), for: .touchUpInside)
+        
+        return ctr
+    }()
+    
+    private lazy var leftTitle: UILabel = {
+        let label = CreateBaseView.makeLabel("用户协议", UIFont.sx.font_t15, kT333, .center, 1)
+        label.backgroundColor = .clear
+        
+        return label
+    }()
+    
+    private lazy var rightLabel: UILabel = {
+        let label = CreateBaseView.makeLabel("隐私协议", UIFont.sx.font_t15, kTaaa, .center, 1)
+        label.backgroundColor = .clear
+        
+        return label
+    }()
+    
+    private lazy var leftImg: UIImageView = {
+        let img = CreateBaseView.makeIMG("left_icon", .scaleAspectFill)
+        img.isHidden = true
+        
+        return img
+    }()
+    
+    private lazy var rightImg: UIImageView = {
+        let img = CreateBaseView.makeIMG("right_icon", .scaleAspectFill)
+        
+        return img
+    }()
     
     // 定义懒加载的 WKWebView
     lazy var webView: WKWebView = {
@@ -86,7 +250,7 @@ class UserAgreementView: UIView, WKNavigationDelegate {
         config.allowsInlineMediaPlayback = true
         
         // 初始化 WebView
-        let webView = WKWebView(frame: CGRect(x: 0, y: sxDynamic(55), width: kSizeScreenWidth, height: sxDynamic(600)), configuration: config)
+        let webView = WKWebView(frame: CGRect(x: 0, y: sxDynamic(65), width: kSizeScreenWidth, height: sxDynamic(600)), configuration: config)
         webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         webView.navigationDelegate = self
         
@@ -101,7 +265,7 @@ class UserAgreementView: UIView, WKNavigationDelegate {
         return contentView
     }()
     private lazy var submitBut: UIButton = {
-        let submitBut = CreateBaseView.makeBut("iot_ok".sx_T, .clear, kTBlue, UIFont.sx.font_t13)
+        let submitBut = CreateBaseView.makeBut("同意协议并继续", .clear, kTBlue, UIFont.sx.font_t13)
         submitBut.addTarget(self, action: #selector(click), for: .touchUpInside)
         submitBut.backgroundColor = .white
         
@@ -109,7 +273,7 @@ class UserAgreementView: UIView, WKNavigationDelegate {
     }()
     
     private lazy var cancleBut: UIButton = {
-        let cancleBut = CreateBaseView.makeBut("map_cancle".sx_T, .clear, kT777, UIFont.sx.font_t13)
+        let cancleBut = CreateBaseView.makeBut("不同意", .clear, kT333, UIFont.sx.font_t13)
         cancleBut.addTarget(self, action: #selector(cancelClick), for: .touchUpInside)
         cancleBut.backgroundColor = .white
         
@@ -119,6 +283,8 @@ class UserAgreementView: UIView, WKNavigationDelegate {
     private lazy var bottomView: UIView = {
         let view = UIView()
         view.backgroundColor = kWhite
+//        view.layer.cornerRadius = 10
+       
         
         return view
     }()

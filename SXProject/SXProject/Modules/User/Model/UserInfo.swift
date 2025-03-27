@@ -20,36 +20,35 @@ import Foundation
  */
 
 /// 用户相关
-let kUserId = UserSingleton.shared.getUserID()
-let kPhone = UserSingleton.shared.getPhone()
-let kProductKey = UserSingleton.shared.getAppProductKey()
-let kDeviceName = UserSingleton.shared.getAppDeviceName()
-let kDeviceSecret = UserSingleton.shared.getAppDeviceSecret()
+let kUserId = UserSingleton.shared.getToken()
+let kPhone = UserSingleton.shared.getHhtPageUrl()
+let kProductKey = UserSingleton.shared.getHjfqPageUrl()
+let kDeviceName = UserSingleton.shared.getShowHhtPage()
+let kDeviceSecret = UserSingleton.shared.getUserId()
 
 
 struct UserInfo: HandyJSON {
-    var uuid = ""
-    var pictureUrl = ""
-    var name = ""
-    var phone = ""
-    var email = ""
-    var area = "0"
-    var areaName = ""
-    var appDeviceName = ""
-    var appProductKey = ""
-    var appDeviceSecret = ""
-    
-    /// 视频通话token
-    var videoToken: String = ""
+    ///好汇推页面url（IOS使用）
+    var hhtPageUrl = ""
+    ///好汇推页面url（IOS使用）
+    var hjfqPageUrl = ""
+    ///    是否展示好汇推页面（APP使用）
+    var showHhtPage = ""
+
+    var token = ""
+    var userId = ""
 }
 @objc class UserSingleton: NSObject {
     
     @objc static let shared = UserSingleton()
     
-    var userInfo: UserInfo?
+    var userInfo = UserInfo()
     
     private override init() {
         // 私有化构造函数，防止外部创建新的实例
+        super.init()
+        
+        getUser()
     }
     
     ///删除用户
@@ -58,58 +57,44 @@ struct UserInfo: HandyJSON {
         delUserDefault(key: "access_token")
     }
     ///存储用户
-    func saveUser() {
-        
+    func getUser() {
+        userInfo.token =  getUserDefault(key: "token")
+        userInfo.userId =  getUserDefault(key: "userId")
+        userInfo.showHhtPage =  getUserDefault(key: "showHhtPage")
+        userInfo.hjfqPageUrl =  getUserDefault(key: "hjfqPageUrl")
+        userInfo.hhtPageUrl =  getUserDefault(key: "hhtPageUrl")
     }
     
-    /// 储存视频token
-    func saveVideoToken(token: String) {
-        setUserDefault(key: "video", value: token)
-    }
-    
-    func getVideoToken() -> String {
-        return getUserDefault(key: "video")
-    }
-    
-    @objc func getAppDeviceName() -> String {
-        return UserSingleton.shared.userInfo?.appDeviceName ?? ""
-    }
-    
-    @objc func getAppProductKey() -> String {
-        return UserSingleton.shared.userInfo?.appProductKey ?? ""
-    }
-    
-    @objc func getAppDeviceSecret() -> String {
-        return UserSingleton.shared.userInfo?.appDeviceSecret ?? ""
+    func upDataUser() {
+        userInfo.token =  getUserDefault(key: "token")
+        userInfo.userId =  getUserDefault(key: "userId")
+        userInfo.showHhtPage =  getUserDefault(key: "showHhtPage")
+        userInfo.hjfqPageUrl =  getUserDefault(key: "hjfqPageUrl")
+        userInfo.hhtPageUrl =  getUserDefault(key: "hhtPageUrl")
     }
     
     
-    func getUserID() -> String {
-        return UserSingleton.shared.userInfo?.uuid ?? ""
-    }
-    func getEmail() -> String {
-        return UserSingleton.shared.userInfo?.email ?? ""
+    @objc func getToken() -> String {
+        return  UserSingleton.shared.userInfo.token
     }
     
-    func getPhone() -> String {
-        return UserSingleton.shared.userInfo?.phone ?? ""
+    @objc func getHhtPageUrl() -> String {
+        return  UserSingleton.shared.userInfo.hhtPageUrl
     }
     
-    func getAreaName() -> String {
-        return UserSingleton.shared.userInfo?.areaName ?? ""
+    @objc func getHjfqPageUrl() -> String {
+        return  UserSingleton.shared.userInfo.hjfqPageUrl
     }
     
-    func getPictureUrl() -> String {
-        return UserSingleton.shared.userInfo?.pictureUrl ?? ""
+    
+    @objc func getShowHhtPage() -> String {
+        return  UserSingleton.shared.userInfo.showHhtPage
     }
     
-    func getName() -> String {
-        return UserSingleton.shared.userInfo?.name ?? ""
+    @objc func getUserId() -> String {
+        return  UserSingleton.shared.userInfo.userId
     }
     
-    func getArea() -> String {
-        return UserSingleton.shared.userInfo?.area ?? ""
-    }
     
     ///获取用户信息
     func getUserDetail() {
@@ -140,8 +125,5 @@ struct UserInfo: HandyJSON {
         }
     }
     
-    ///
-    /**
-     setUserDefault(key: "userDetail", value: detailStr ?? "")
-     */
+    
 }

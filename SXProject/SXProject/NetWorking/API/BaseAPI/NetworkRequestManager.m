@@ -46,53 +46,22 @@
     [[BITRequestClient sharedClient] loadDataWithApi:requestAPI successBlock:^(NSString * _Nullable result) {
         
         NSDictionary *dic = result.mj_JSONObject;
-        NSDictionary *tempDic = dic[@"data"];
+        NSDictionary *tempDic = dic;
         if ([tempDic isKindOfClass:[NSDictionary class]] || [tempDic isKindOfClass:[NSArray class]] || [tempDic isKindOfClass:[NSNull class]]) {
-            NSString *code = dic[@"code"];
-            if ([code isEqualToString:@"0000"]) {
-                if (tempDic != [NSNull null]) {
-                    NSString *jsonStr = tempDic.mj_JSONString;
-                    if (success){
-                        success(jsonStr);
-                    }
-                } else {
-                    if (success){
-                        NSDictionary *dic = @{@"code":@"-1"};
-                        NSString *tempStr = [dic mj_JSONString];
-                        success(tempStr);
-                    }
+            
+            if (tempDic != [NSNull null]) {
+                NSString *jsonStr = tempDic.mj_JSONString;
+                if (success){
+                    success(jsonStr);
                 }
-            } else if ([code isEqualToString:@"BG_00003"]) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"kLoginOutNotification" object:nil];
-                
             } else {
-                NSString *msg = [[NSString alloc] initWithFormat:@"%@",dic[@"msg"]];
-           
-                [self showError:msg];
-                
-                if (tempDic != [NSNull null]) {
-                    NSString *jsonStr = tempDic.mj_JSONString;
-                    if (success){
-                        success(jsonStr);
-                    }
-                } else {
-                    if (success){
-                        NSDictionary *dic = @{@"code":@"-1"};
-                        NSString *tempStr = [dic mj_JSONString];
-                        success(tempStr);
-                    }
+                if (success){
+                    NSDictionary *dic = @{@"code":@"-1"};
+                    NSString *tempStr = [dic mj_JSONString];
+                    success(tempStr);
                 }
-            }
-        } else {
-//            [self showError:@"server_error_type_title".sx_T];
-            if (success){
-                NSDictionary *dic = @{@"code":@"server_error_type_title".sx_T};
-                NSString *tempStr = [dic mj_JSONString];
-                success(tempStr);
             }
         }
-        
-    
     } failureBlock:^(NSError * _Nullable error) {
         if (failure) {
             failure(error);

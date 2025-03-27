@@ -9,6 +9,9 @@ import UIKit
 import ActiveLabel
 
 class LoginVC: ViewController, UITextFieldDelegate {
+    
+    /// 是否同意协议
+    var agree = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +43,8 @@ class LoginVC: ViewController, UITextFieldDelegate {
         
         view.addSubview(submitBut)
         view.addSubview(subLabel)
+        
+        dealSubmit()
     }
     func initViewLayouts() {
         groundView.snp.makeConstraints { make in
@@ -77,19 +82,38 @@ class LoginVC: ViewController, UITextFieldDelegate {
     }
     
     //MARK: - actions
+    func dealAgree() {
+        selectedBut.isSelected = self.agree
+        dealSubmit()
+   }
+    
+    func dealSubmit() {
+        if self.agree ==  true {
+            submitBut.backgroundColor = kTBlue
+            submitBut.setTitleColor(kWhite, for: .normal)
+        } else {
+            submitBut.backgroundColor = kBF2
+            submitBut.setTitleColor(kTaaa, for: .normal)
+        }
+       
+    }
     
     @objc
     func agreeClick(button: UIButton) {
         button.isSelected = !button.isSelected
       
-     
+        self.agree = button.isSelected
+        
+        dealSubmit()
     }
     @objc
     func loginClick() {
-        getPhoneCode()
-        let vc = SendCodeVC()
+        if self.agree == false {
+            return
+        }
         
-        self.navigationController?.pushViewController(vc, animated: true)
+        getPhoneCode()
+      
     }
     
     
@@ -145,15 +169,31 @@ class LoginVC: ViewController, UITextFieldDelegate {
 
         protocolLab.handleCustomTap(for: serviceAgreement) { _ in
             printLog("服务协议")
-            print("服务协议！！")
+            let alertView = UserAgreementView()
+            alertView.loadWebView(privacy: false)
+            alertView.agreeBlock = { [weak self] agree in
+                self?.agree = agree
+                self?.dealAgree()
+            }
+            
+            alertView.show()
            
         }
         protocolLab.handleCustomTap(for: privacyPolicy) { _ in
-            printLog("隐私政策")
+            let alertView = UserAgreementView()
+            alertView.loadWebView(privacy: true)
+            alertView.agreeBlock = { [weak self] agree in
+                self?.agree = agree
+                self?.dealAgree()
+            }
+            
+            alertView.show()
         }
         
         return protocolLab
     }()
+    
+   
     
     private lazy var selectedBut: UIButton = {
         let but = UIButton.init(type: .custom)

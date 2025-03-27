@@ -5,111 +5,114 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "817616E0-F887-41D1-BFB8-7BE5ED7EECDF"
+            uuid = "E0DBAD79-5169-4B1A-9225-045124DC1263"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            breakpointStackSelectionBehavior = "1"
-            scope = "0"
-            stopOnStyle = "0">
+            filePath = "SXProject/Modules/Login/LoginVC+Config.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "getPhoneCode()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E0DBAD79-5169-4B1A-9225-045124DC1263 - 8796c71d7cacafdd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String) -&gt; () in SXProject.LoginVC.getPhoneCode() -&gt; ()"
+                  moduleName = "SXProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wangwei/Desktop/%E5%A4%96%E5%8C%85=%E4%B8%80%E7%9B%B4%E7%94%A8app/SXProject/SXProject/Modules/Login/LoginVC+Config.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "396">
+               </Location>
+               <Location
+                  uuid = "E0DBAD79-5169-4B1A-9225-045124DC1263 - 8796c71d7cacafdd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String) -&gt; () in SXProject.LoginVC.getPhoneCode() -&gt; ()"
+                  moduleName = "SXProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wangwei/Desktop/%E5%A4%96%E5%8C%85=%E4%B8%80%E7%9B%B4%E7%94%A8app/SXProject/SXProject/Modules/Login/LoginVC+Config.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "768">
+               </Location>
+               <Location
+                  uuid = "E0DBAD79-5169-4B1A-9225-045124DC1263 - 8796c71d7cacaf9f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String) -&gt; () in SXProject.LoginVC.getPhoneCode() -&gt; ()"
+                  moduleName = "SXProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wangwei/Desktop/%E5%A4%96%E5%8C%85=%E4%B8%80%E7%9B%B4%E7%94%A8app/SXProject/SXProject/Modules/Login/LoginVC+Config.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "352">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "550B17FC-79C8-47DE-9887-575AE7FDB618"
+            uuid = "AD6B879B-EED1-4E8C-857F-797BEF8C6DD2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SXProject/Modules/Home/HomeController+Config.swift"
+            filePath = "SXProject/Modules/Login/SendCodeVC+Config.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "helpClick()"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "goLogin()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F0231A8F-E69B-4B87-B946-9F1F2CFCCDB7"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SXProject/Modules/Home/HomeController+Config.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "12"
-            endingLineNumber = "12"
-            landmarkName = "getAllowance()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7E82FE60-69B5-4FEA-AB9E-0FB91EDC6DAB"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SXProject/Modules/Home/HomeController+Config.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "notificate()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "03B45CAE-5008-477D-891B-5FFC39E8050C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SXProject/Modules/My/View/MyTopView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "headTapClick()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "AA6BEAB6-9D68-4801-98A8-5203BF89A90B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SXProject/Modules/Home/Add(&#x63d0;&#x4ea4;)/Views/BottomView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "addSubmit()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CE3FC47A-816C-4BFE-8101-A59F369C183C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SXProject/Modules/Home/Help/&#x9632;&#x8bc8;&#x6307;&#x5357;/Views/TopGuideCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "setDataSource(dic:)"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AD6B879B-EED1-4E8C-857F-797BEF8C6DD2 - d724b8be65625768"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String) -&gt; () in SXProject.SendCodeVC.goLogin() -&gt; ()"
+                  moduleName = "SXProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wangwei/Desktop/%E5%A4%96%E5%8C%85=%E4%B8%80%E7%9B%B4%E7%94%A8app/SXProject/SXProject/Modules/Login/SendCodeVC+Config.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "376">
+               </Location>
+               <Location
+                  uuid = "AD6B879B-EED1-4E8C-857F-797BEF8C6DD2 - d724b8be65625768"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String) -&gt; () in SXProject.SendCodeVC.goLogin() -&gt; ()"
+                  moduleName = "SXProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wangwei/Desktop/%E5%A4%96%E5%8C%85=%E4%B8%80%E7%9B%B4%E7%94%A8app/SXProject/SXProject/Modules/Login/SendCodeVC+Config.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "748">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

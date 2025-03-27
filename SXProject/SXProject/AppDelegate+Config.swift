@@ -39,6 +39,8 @@ extension AppDelegate {
         bugly()
         ///初始化网络配置
         initNetWorkConfig()
+        /// 获取ip
+        getIPAdress()
   
 
         // 设置后并激活后台播放
