@@ -25,6 +25,9 @@ extension JKHelpVC {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 2 {
+            return sxDynamic(130)
+        }
         return HelpJkCell.cellHeight()
     }
     

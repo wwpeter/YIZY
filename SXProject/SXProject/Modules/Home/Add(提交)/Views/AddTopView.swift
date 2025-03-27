@@ -1,13 +1,13 @@
 //
-//  TopGuideView.swift
+//  AddTopView.swift
 //  SXProject
 //
-//  Created by 王威 on 2025/2/23.
+//  Created by 王威 on 2025/3/27.
 //
 
 import UIKit
 
-class TopGuideView: UIView {
+class AddTopView: UIView {
 
     /// 使用代码创建一个View会调用该构造方法
     ///
@@ -55,31 +55,26 @@ class TopGuideView: UIView {
             make.left.equalTo(self.snp.left).offset(sxDynamic(15))
         }
         
-        leftIcon.snp.makeConstraints { make in
-            make.left.equalTo(backBut.snp.right)
-            make.top.equalTo(backBut.snp.bottom).offset(sxDynamic(28))
-            make.height.equalTo(sxDynamic(26))
-            make.width.equalTo(sxDynamic(127))
-        }
+      
     }
     
    
     //MARK: - getter
     private lazy var titleLabel: UILabel = {
-        let label = CreateBaseView.makeLabel("防诈指南", UIFont.sx.font_t18, kT333, .center, 1)
+        let label = CreateBaseView.makeLabel("提交申请", UIFont.sx.font_t18, kWhite, .center, 1)
         
         return label
     }()
     
     lazy var backBut: UIButton = {
-        let but = CreateBaseView.makeBut("navigationBack")
+        let but = CreateBaseView.makeBut("white_back")
         
         
         return but
     }()
     
     private lazy var img: UIImageView = {
-        let img = CreateBaseView.makeIMG("fangzha_back", .scaleAspectFill)
+        let img = CreateBaseView.makeIMG("add_top_icon", .scaleAspectFill)
         
         return img
     }()
@@ -89,5 +84,6 @@ class TopGuideView: UIView {
         
         return img
     }()
+
 
 }

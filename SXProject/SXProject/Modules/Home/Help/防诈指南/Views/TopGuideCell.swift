@@ -11,10 +11,10 @@ class TopGuideCell: UITableViewCell {
 
   
     class func cellID() -> String {
-        return "HelpJkCell"
+        return "TopGuideCell"
     }
     class func registerCell(tableView: UITableView) {
-        tableView.register(HelpJkCell.self, forCellReuseIdentifier: cellID())
+        tableView.register(TopGuideCell.self, forCellReuseIdentifier: cellID())
     }
     class func cellHeight() -> CGFloat {
         return sxDynamic(110)
@@ -23,7 +23,7 @@ class TopGuideCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = .clear
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .clear
         self.selectionStyle = .none
         initViews()
     }
@@ -35,22 +35,35 @@ class TopGuideCell: UITableViewCell {
     
     //MARK: - action
     
+    func setDataSource(dic: [String:String]) {
+        titlleLabel.text = dic["title"]
+        subLabel.text = dic["sub"]
+    }
+    
     //MARK: - initializa
     func initViews() {
-        contentView.addSubview(titlleLabel)
+    
         contentView.addSubview(groundView)
         contentView.addSubview(subLabel)
+        contentView.addSubview(titlleLabel)
     }
     
     override func layoutSubviews() {
         titlleLabel.snp.makeConstraints { make in
-            
+            make.left.equalTo(contentView.snp.left).offset(sxDynamic(35))
+            make.top.equalTo(contentView.snp.top).offset(sxDynamic(15))
         }
         groundView.snp.makeConstraints { make in
-            
+            make.left.equalTo(contentView.snp.left).offset(sxDynamic(20))
+            make.right.equalTo(contentView.snp.right).offset(sxDynamic(-20))
+            make.top.equalTo(titlleLabel.snp.bottom).offset(sxDynamic(10))
+            make.bottom.equalTo(contentView.snp.bottom).offset(sxDynamic(-5))
         }
         subLabel.snp.makeConstraints { make in
-            
+            make.left.equalTo(contentView.snp.left).offset(sxDynamic(35))
+            make.right.equalTo(contentView.snp.right).offset(sxDynamic(-35))
+            make.top.equalTo(groundView.snp.top).offset(sxDynamic(15))
+            make.bottom.equalTo(groundView.snp.bottom).offset(sxDynamic(-15))
         }
     }
     
@@ -64,6 +77,7 @@ class TopGuideCell: UITableViewCell {
     
     private lazy var subLabel: UILabel = {
         let label = CreateBaseView.makeLabel("", UIFont.sx.font_t13, kT333, .left, 0)
+        label.adjustsFontSizeToFitWidth = true
         
         return label
     }()

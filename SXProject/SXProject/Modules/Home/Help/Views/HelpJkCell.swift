@@ -22,7 +22,7 @@ class HelpJkCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = .clear
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .clear
         self.selectionStyle = .none
         initViews()
     }
@@ -53,12 +53,12 @@ class HelpJkCell: UITableViewCell {
             make.top.equalTo(contentView.snp.top).offset(sxDynamic(10))
             make.left.equalTo(contentView.snp.left).offset(sxDynamic(15))
             make.right.equalTo(contentView.snp.right).offset(sxDynamic(-15))
-            make.height.equalTo(sxDynamic(100))
+            make.bottom.equalTo(contentView.snp.bottom).offset(sxDynamic(-10))
         }
         
         iconImg.snp.makeConstraints { make in
             make.width.height.equalTo(sxDynamic(13))
-            make.left.equalTo(contentView.snp.left).offset(sxDynamic(15))
+            make.left.equalTo(groundView.snp.left).offset(sxDynamic(15))
             make.top.equalTo(groundView.snp.top).offset(sxDynamic(20))
         }
         
@@ -72,11 +72,11 @@ class HelpJkCell: UITableViewCell {
             make.top.equalTo(titleLabel.snp.bottom).offset(sxDynamic(10))
             make.left.equalTo(groundView.snp.left).offset(sxDynamic(15))
             make.right.equalTo(groundView.snp.right).offset(sxDynamic(-15))
-            make.height.equalTo(sxDynamic(38))
+            make.bottom.equalTo(contentView.snp.bottom).offset(sxDynamic(-15))
         }
         
         subLabel.snp.makeConstraints { make in
-            make.height.equalTo(sxDynamic(20))
+          
             make.centerY.equalTo(subGroundView.snp.centerY)
             make.right.equalTo(subGroundView.snp.right).offset(sxDynamic(-20))
             make.left.equalTo(subGroundView.snp.left).offset(sxDynamic(10))
@@ -114,7 +114,7 @@ class HelpJkCell: UITableViewCell {
     }()
     
     private lazy var subLabel: UILabel = {
-        let titleLabel = CreateBaseView.makeLabel("v1.0.0", UIFont.sx.font_t13, kT333, .left, 1)
+        let titleLabel = CreateBaseView.makeLabel("v1.0.0", UIFont.sx.font_t13, kT333, .left, 0)
         
         return titleLabel
     }()

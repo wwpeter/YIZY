@@ -15,7 +15,10 @@ class TestVC: ViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         initViews()
-    
+        let dsweb = DsWebController()
+//        let url = tempModel.content
+//        dsweb.url = url
+        self.navigationController?.pushViewController(dsweb, animated: true)
     }
 
     //MARK: - 视图创建

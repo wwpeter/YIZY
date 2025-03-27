@@ -19,6 +19,13 @@
 		4A2DF2BD2D93EC37007EC0CD /* AddSubmitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DF2BC2D93EC37007EC0CD /* AddSubmitVC.swift */; };
 		4A2DF2C02D93F169007EC0CD /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DF2BF2D93F169007EC0CD /* BottomView.swift */; };
 		4A2DF2C22D93F321007EC0CD /* AddSubmitVC+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DF2C12D93F321007EC0CD /* AddSubmitVC+Config.swift */; };
+		4A2DF2E22D953091007EC0CD /* choose_city.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A2DF2E02D953091007EC0CD /* choose_city.json */; };
+		4A2DF2E42D95367B007EC0CD /* CheaterGuideBV+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DF2E32D95367B007EC0CD /* CheaterGuideBV+Config.swift */; };
+		4A2DF2E62D954676007EC0CD /* AddTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DF2E52D954676007EC0CD /* AddTopView.swift */; };
+		4A2DF2EC2D954B23007EC0CD /* WebController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DF2E82D954B23007EC0CD /* WebController.swift */; };
+		4A2DF2ED2D954B23007EC0CD /* RequestFailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DF2E92D954B23007EC0CD /* RequestFailView.swift */; };
+		4A2DF2EE2D954B23007EC0CD /* DsWebController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DF2EA2D954B23007EC0CD /* DsWebController.swift */; };
+		4A2DF2EF2D954B23007EC0CD /* WebController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A2DF2EB2D954B23007EC0CD /* WebController.xib */; };
 		4A3C698E2B980D1C00C5F2A9 /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3C698D2B980D1C00C5F2A9 /* TestVC.swift */; };
 		4A3C69942B98128E00C5F2A9 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3C69932B98128E00C5F2A9 /* TestView.swift */; };
 		4A3C699A2B98160300C5F2A9 /* CreateBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3C69992B98160200C5F2A9 /* CreateBaseView.swift */; };
@@ -299,6 +306,13 @@
 		4A2DF2BC2D93EC37007EC0CD /* AddSubmitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubmitVC.swift; sourceTree = "<group>"; };
 		4A2DF2BF2D93F169007EC0CD /* BottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
 		4A2DF2C12D93F321007EC0CD /* AddSubmitVC+Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddSubmitVC+Config.swift"; sourceTree = "<group>"; };
+		4A2DF2E02D953091007EC0CD /* choose_city.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = choose_city.json; sourceTree = "<group>"; };
+		4A2DF2E32D95367B007EC0CD /* CheaterGuideBV+Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheaterGuideBV+Config.swift"; sourceTree = "<group>"; };
+		4A2DF2E52D954676007EC0CD /* AddTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTopView.swift; sourceTree = "<group>"; };
+		4A2DF2E82D954B23007EC0CD /* WebController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebController.swift; sourceTree = "<group>"; };
+		4A2DF2E92D954B23007EC0CD /* RequestFailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFailView.swift; sourceTree = "<group>"; };
+		4A2DF2EA2D954B23007EC0CD /* DsWebController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DsWebController.swift; sourceTree = "<group>"; };
+		4A2DF2EB2D954B23007EC0CD /* WebController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebController.xib; sourceTree = "<group>"; };
 		4A3C698D2B980D1C00C5F2A9 /* TestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
 		4A3C69932B98128E00C5F2A9 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		4A3C69992B98160200C5F2A9 /* CreateBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateBaseView.swift; sourceTree = "<group>"; };
@@ -660,8 +674,20 @@
 			isa = PBXGroup;
 			children = (
 				4A2DF2BF2D93F169007EC0CD /* BottomView.swift */,
+				4A2DF2E52D954676007EC0CD /* AddTopView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4A2DF2E72D954B23007EC0CD /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				4A2DF2E82D954B23007EC0CD /* WebController.swift */,
+				4A2DF2E92D954B23007EC0CD /* RequestFailView.swift */,
+				4A2DF2EA2D954B23007EC0CD /* DsWebController.swift */,
+				4A2DF2EB2D954B23007EC0CD /* WebController.xib */,
+			);
+			path = WebView;
 			sourceTree = "<group>";
 		};
 		4A46CABE2D5D863A003D3020 /* View */ = {
@@ -853,6 +879,7 @@
 			children = (
 				4A7828162D6B1247000D7E7C /* Views */,
 				4A46CB022D5EDD6F003D3020 /* CheaterGuideBV.swift */,
+				4A2DF2E32D95367B007EC0CD /* CheaterGuideBV+Config.swift */,
 			);
 			path = "防诈指南";
 			sourceTree = "<group>";
@@ -1227,6 +1254,7 @@
 		4AC605AA2B44158E00C00151 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4A2DF2E72D954B23007EC0CD /* WebView */,
 				4AFF6BEF2B452A15008F8C7F /* Refresh */,
 				4AFF6AE72B4416EE008F8C7F /* Alert */,
 				4AFF6ADC2B44165E008F8C7F /* Reachability */,
@@ -1342,6 +1370,7 @@
 		4AFF6B4A2B450A14008F8C7F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4A2DF2E02D953091007EC0CD /* choose_city.json */,
 				4AFF6B4E2B450A14008F8C7F /* Assets.xcassets */,
 				4AFF6B4B2B450A14008F8C7F /* Colors.xcassets */,
 				4AFF6B512B450A14008F8C7F /* Images.xcassets */,
@@ -1767,11 +1796,13 @@
 			files = (
 				4AFF6B592B450A14008F8C7F /* Images.xcassets in Resources */,
 				4AFF6B572B450A14008F8C7F /* china_city.json in Resources */,
+				4A2DF2E22D953091007EC0CD /* choose_city.json in Resources */,
 				4AC7033E2B3A8481001C065B /* LaunchScreen.storyboard in Resources */,
 				4AFF6B542B450A14008F8C7F /* Colors.xcassets in Resources */,
 				4A8BE2872BD609A9005D466E /* BITRequestManagerAssets.xcassets in Resources */,
 				4AFF6B582B450A14008F8C7F /* test.html in Resources */,
 				4A228D882B50CD8A005FD89B /* Localizable.strings in Resources */,
+				4A2DF2EF2D954B23007EC0CD /* WebController.xib in Resources */,
 				4AFF6B562B450A14008F8C7F /* Assets.xcassets in Resources */,
 				4AFF6B552B450A14008F8C7F /* animation_xueyangyi_end.json in Resources */,
 				4A77441A2B456D830098CB89 /* InfoPlist.strings in Resources */,
@@ -1967,6 +1998,7 @@
 				4A8BE3392BD63207005D466E /* RSAUtil.m in Sources */,
 				4AFF6BA92B45115F008F8C7F /* Log.swift in Sources */,
 				4A8BE28A2BD609A9005D466E /* BITLoadingView.m in Sources */,
+				4A2DF2EE2D954B23007EC0CD /* DsWebController.swift in Sources */,
 				4A46CADF2D5DDDB5003D3020 /* EmptyView.swift in Sources */,
 				4A8BE28B2BD609A9005D466E /* BITRequestClient.m in Sources */,
 				4A7828122D6B0FF5000D7E7C /* CenterViewDetailView.swift in Sources */,
@@ -1987,10 +2019,12 @@
 				4AFF6BAC2B45115F008F8C7F /* Then.swift in Sources */,
 				4A7503032D2BBF6D00719B58 /* HomeBottomItem.swift in Sources */,
 				4A8BE3472BD63207005D466E /* ZAUnicode.m in Sources */,
+				4A2DF2E42D95367B007EC0CD /* CheaterGuideBV+Config.swift in Sources */,
 				4A46CAF32D5DF07E003D3020 /* BankCardModel.swift in Sources */,
 				4A46CAFD2D5ED608003D3020 /* HelpJkCell.swift in Sources */,
 				4A7828072D6B0910000D7E7C /* AlertViewFillFirst.swift in Sources */,
 				4AFF6BF12B452A15008F8C7F /* URefresh.swift in Sources */,
+				4A2DF2EC2D954B23007EC0CD /* WebController.swift in Sources */,
 				4A78281A2D6B1289000D7E7C /* TopGuideCell.swift in Sources */,
 				4AAC81E12BFF1996009F961E /* ShareAlertView.swift in Sources */,
 				4A7503012D2BBE0A00719B58 /* HomeBottomView.swift in Sources */,
@@ -2035,6 +2069,7 @@
 				4A8BE3A92BDA371F005D466E /* BaseConfigCommon.swift in Sources */,
 				4A78280F2D6B0FD5000D7E7C /* ApplicationDetailVC.swift in Sources */,
 				4AFF6BE92B45294E008F8C7F /* HomeController.swift in Sources */,
+				4A2DF2E62D954676007EC0CD /* AddTopView.swift in Sources */,
 				4A8BE3452BD63207005D466E /* RSAEncryptor.m in Sources */,
 				4A2DF2B42D93DBEE007EC0CD /* GaodeCityModel.m in Sources */,
 				4A8BE3842BD65E9C005D466E /* UIView+HDCornerBorder.m in Sources */,
@@ -2125,6 +2160,7 @@
 				4AFF6BC52B45115F008F8C7F /* UIButtonExtensions.swift in Sources */,
 				4A8BE2B92BD60B6C005D466E /* BGCommonStarView.m in Sources */,
 				4A46CAE52D5DE266003D3020 /* UserProtocolVC+List.swift in Sources */,
+				4A2DF2ED2D954B23007EC0CD /* RequestFailView.swift in Sources */,
 				4A228D932B50D683005FD89B /* TestViewController.m in Sources */,
 				4AFF6BD62B45115F008F8C7F /* Protocols.swift in Sources */,
 				4A7502FC2D2BB5D700719B58 /* HomeTopView.swift in Sources */,

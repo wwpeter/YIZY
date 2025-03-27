@@ -29,19 +29,37 @@ class CenterViewDetailView: UIView {
         self.initViewLayouts()
     }
     
+    func showFaild() {
+        titleLabel.text = "平台已接收到您的需求，请您3天后再来申请"
+        groundImg.image = UIImage(named: "fail_icon")
+    }
+    
     //MARK: - initialize
     func initViews() {
-      
+        backgroundColor = .white
+        
+        addSubview(groundImg)
+        addSubview(titleLabel)
     }
     
     func initViewLayouts() {
-        
+        groundImg.snp.makeConstraints { make in
+            make.centerX.equalTo(self.snp.centerX)
+            make.top.equalTo(self.snp.top).offset(sxDynamic(50))
+            make.width.equalTo(sxDynamic(185))
+            make.height.equalTo(sxDynamic(100))
+        }
+        titleLabel.snp.makeConstraints { make in
+            make.left.equalTo(self.snp.left).offset(sxDynamic(20))
+            make.right.equalTo(self.snp.right).offset(sxDynamic(-20))
+            make.top.equalTo(groundImg.snp.bottom).offset(sxDynamic(40))
+        }
     }
     
     //MARK: - getter
     
     private lazy var groundImg: UIImageView = {
-        let img = CreateBaseView.makeIMG("alertView_ground", .scaleAspectFit)
+        let img = CreateBaseView.makeIMG("shenhezhong_icon", .scaleAspectFit)
         img.contentMode = .scaleAspectFit
         
         return img
@@ -55,7 +73,7 @@ class CenterViewDetailView: UIView {
     private lazy var contentView: UIView = {
         let contentView = UIView()
         contentView.layer.cornerRadius = sxDynamic(16)
-        contentView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+//        contentView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         contentView.backgroundColor = .white
         
         return contentView
