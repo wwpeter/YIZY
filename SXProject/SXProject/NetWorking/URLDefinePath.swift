@@ -70,7 +70,7 @@ let kQueryBlackUserIdCard = "/hht/h5/user/queryBlackUserIdCard"
 let kIdCardCredit = "/hht/h5/user/idCardCredit"
 
 ///字典控制器
-///查询对应的模块
+///查询对应的模块 - 提交数据的 展示数据
 let kQueryListByType = "/hht/dictionary/queryListByType"
 
 
