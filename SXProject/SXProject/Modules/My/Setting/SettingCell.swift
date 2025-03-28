@@ -39,6 +39,14 @@ class SettingCell: UITableViewCell {
         subLabel.text = dic["sub"]
     }
     
+    func hiddenIcon() {
+        rightIcon.isHidden = true
+        subLabel.snp.remakeConstraints { make in
+            make.right.equalTo(contentView.snp.right).offset(sxDynamic(-20))
+            make.centerY.equalTo(contentView.snp.centerY)
+        }
+    }
+    
     //MARK: - initializa
     func initViews() {
         contentView.addSubview(titleLabel)

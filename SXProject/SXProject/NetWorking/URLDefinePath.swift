@@ -24,6 +24,7 @@ let kPrivacyAgreement = "/yzyhome/agreement/privacy/"
 let kSignoutAgreement = " /yzyhome/agreement/signout/"
 ///个人信息共享授权协议
 let kAgreementShare = "/yzyhome/agreement/share/"
+
 /// 用户登录相关接口
 /// 根据手机验证码登录
 let kLogin = "/hht/h5/account/login"

@@ -9,13 +9,18 @@ import UIKit
 
 class BankListVC: ViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var sourceData = [BankCardModel]()
+    var sourceData = [HandyJSON?]()
    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initViews()
-       
+      
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        getBankList()/// 获取银行卡列表
     }
     
     func initViews() {
@@ -24,13 +29,25 @@ class BankListVC: ViewController, UITableViewDelegate, UITableViewDataSource {
         
         ListCardCell.registerCell(tableView: myTableView)
         view.addSubview(myTableView)
-        view.addSubview(addView)
+//        view.addSubview(addView)
     }
     
     @objc func addBankCard() {
         let vc = BankAddCardVC()
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    //处理空数据问题
+    func dealEmpty(empty: Bool) {
+        if empty {
+            myTableView.addSubview(addView)
+            addView.isHidden = false
+        } else {
+            addView.isHidden = true
+            addView.removeFromSuperview()
+        }
+    }
+    
+    
     
     //MARK: - initialize
     lazy var myTableView: UITableView = {

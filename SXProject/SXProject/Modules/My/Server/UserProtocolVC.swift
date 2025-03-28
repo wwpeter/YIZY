@@ -13,6 +13,8 @@ class UserProtocolVC: ViewController , UITableViewDelegate, UITableViewDataSourc
     /// 借款还是还款0 借款 1 还款
     var recordType = 0
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,6 +30,7 @@ class UserProtocolVC: ViewController , UITableViewDelegate, UITableViewDataSourc
         
         view.addSubview(myTableView)
         view.addSubview(loginOutBut)
+        
     }
     
     @objc func loginOut() {

@@ -33,9 +33,9 @@ class ListCardCell: UITableViewCell {
     }
     
     //MARK: - action
-    func setTitle(cardName: String, cardNum: String) {
-        nameLabel.text = cardName
-        cardNumberLabel.text = cardNum
+    func setTitle(model: BankCardModel) {
+        nameLabel.text = model.bank
+        cardNumberLabel.text = model.cardNum
     }
 
     func initViews() {

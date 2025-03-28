@@ -29,10 +29,23 @@ extension ProtocolVC {
      }
      
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+         var urlT = ""
          if indexPath.row == 0 {
-             let vc = UserProtocolVC()
-             
-             self.navigationController?.pushViewController(vc, animated: true)
+//             let vc = UserProtocolVC()
+//             
+//             self.navigationController?.pushViewController(vc, animated: true)
+             urlT = String.init(format: "%@%@", kWebUrlBase, kUserAgreement)
+         } else if indexPath.row == 1 {
+             urlT = String.init(format: "%@%@", kWebUrlBase, kPrivacyAgreement)
+         } else if indexPath.row == 2 {
+             urlT = String.init(format: "%@%@", kWebUrlBase, kAgreementShare)
+         } else if indexPath.row == 3 {
+             urlT = String.init(format: "%@%@", kWebUrlBase, kSignoutAgreement)
          }
+         
+         let dsweb = DsWebController()
+    
+         dsweb.url = urlT
+         self.navigationController?.pushViewController(dsweb, animated: true)
      }
 }

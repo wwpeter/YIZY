@@ -12,5 +12,8 @@ struct BankCardModel: HandyJSON {
     var name = ""
     var cardNum = ""
     var phone = ""
-    var cardBank = ""
+    var bank = ""
+    var userId = ""
+    
+    var id = ""
 }

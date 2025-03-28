@@ -14,6 +14,10 @@ extension SettingVC {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: SettingCell.cellID()) as?  SettingCell {
+            if indexPath.row == 1 {
+                cell.hiddenIcon()
+            }
+            
             let dic = dataSource[indexPath.row]
             cell.setDataSource(dic: dic)
             

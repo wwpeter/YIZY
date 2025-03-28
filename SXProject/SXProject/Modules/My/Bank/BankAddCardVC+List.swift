@@ -14,6 +14,21 @@ extension BankAddCardVC {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: AddCardCell.cellID()) as?  AddCardCell {
+            cell.textblock = { [weak self] result in
+                if indexPath.row == 0 {
+                    self?.cardModel.name = result
+                } else if indexPath.row == 1 {
+                    self?.cardModel.cardNum = result
+                } else if indexPath.row == 2 {
+                    self?.cardModel.phone = result
+                } else if indexPath.row == 3 {
+                    self?.cardModel.bank = result
+                }
+                
+            }
+            if indexPath.row == 1 || indexPath.row == 2 {
+                cell.exchangeField()
+            }
             
             cell.setTitle(title: sourceData[indexPath.row], placeholder: placeholderData[indexPath.row])
             
@@ -30,4 +45,6 @@ extension BankAddCardVC {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
+    
+    
 }

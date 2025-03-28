@@ -7,9 +7,11 @@
 
 import UIKit
 
+typealias AddCardCellBlock = (_ text: String) -> Void
+
 class AddCardCell: UITableViewCell, UITextFieldDelegate {
 
-
+    var textblock: AddCardCellBlock?
     class func cellID() -> String {
         return "AddCardCell"
     }
@@ -33,10 +35,32 @@ class AddCardCell: UITableViewCell, UITextFieldDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Delegate 键盘
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else {
+            return true
+        }
+        // 获取输入框的最新文本
+        let updatedText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? ""
+        
+        let textLength = text.count + string.count - range.length
+        
+        guard let blockT = textblock else { return true}
+        blockT(updatedText)
+        
+        return true
+        
+    
+    }
+    
     //MARK: - action
     func setTitle(title: String, placeholder: String) {
         leftLabel.text = title
-        rightTextField.text = placeholder
+        rightTextField.placeholder = placeholder
+    }
+    
+    func exchangeField() {
+        rightTextField.keyboardType = .numberPad
     }
 
     func initViews() {

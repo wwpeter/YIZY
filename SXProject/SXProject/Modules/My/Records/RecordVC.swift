@@ -25,7 +25,7 @@ class RecordVC: ViewController , UITableViewDelegate, UITableViewDataSource {
             SX_navTitle = "借款记录"
         } else  {
             SX_navTitle = "还款记录"
-            emptyView.exchange(title: "还款记录", icon: "hk_record")
+            emptyView.exchange(title: "暂无还款记录", icon: "hk_record")
         }
    
         

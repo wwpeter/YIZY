@@ -13,6 +13,7 @@
 		4A02BFA32D9645E600E7DA98 /* SettingVC+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02BFA22D9645E600E7DA98 /* SettingVC+Config.swift */; };
 		4A02BFA62D964F2600E7DA98 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02BFA52D964F2600E7DA98 /* SettingCell.swift */; };
 		4A02BFA92D964F3E00E7DA98 /* TestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02BFA82D964F3E00E7DA98 /* TestCell.swift */; };
+		4A02BFB02D96869400E7DA98 /* BankListVC+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02BFAF2D96869400E7DA98 /* BankListVC+Config.swift */; };
 		4A228D882B50CD8A005FD89B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4AC6059F2B4411E100C00151 /* Localizable.strings */; };
 		4A228D932B50D683005FD89B /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A228D922B50D683005FD89B /* TestViewController.m */; };
 		4A228D962B50DF80005FD89B /* ConnectDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A228D952B50DF80005FD89B /* ConnectDeviceManager.m */; };
@@ -302,6 +303,7 @@
 		4A02BFA22D9645E600E7DA98 /* SettingVC+Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingVC+Config.swift"; sourceTree = "<group>"; };
 		4A02BFA52D964F2600E7DA98 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		4A02BFA82D964F3E00E7DA98 /* TestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCell.swift; sourceTree = "<group>"; };
+		4A02BFAF2D96869400E7DA98 /* BankListVC+Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BankListVC+Config.swift"; sourceTree = "<group>"; };
 		4A228D912B50D683005FD89B /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		4A228D922B50D683005FD89B /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		4A228D942B50DF80005FD89B /* ConnectDeviceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectDeviceManager.h; sourceTree = "<group>"; };
@@ -741,6 +743,7 @@
 				4A46CAE62D5DE92F003D3020 /* Views */,
 				4A46CAE72D5DE953003D3020 /* BankListVC.swift */,
 				4A46CAE92D5DE964003D3020 /* BankListVC+List.swift */,
+				4A02BFAF2D96869400E7DA98 /* BankListVC+Config.swift */,
 				4A46CAEB2D5DE97C003D3020 /* BankAddCardVC.swift */,
 				4A46CAEF2D5DEFA4003D3020 /* BankAddCardVC+List.swift */,
 			);
@@ -2171,6 +2174,7 @@
 				4A8BE3462BD63207005D466E /* WBCloudFaceNetManager.m in Sources */,
 				4A8BE28F2BD609AA005D466E /* BITCacheCenter.m in Sources */,
 				4A3C698E2B980D1C00C5F2A9 /* TestVC.swift in Sources */,
+				4A02BFB02D96869400E7DA98 /* BankListVC+Config.swift in Sources */,
 				4A2DF2B72D93E1CE007EC0CD /* LoginVC+Config.swift in Sources */,
 				4A46CAF02D5DEFA4003D3020 /* BankAddCardVC+List.swift in Sources */,
 				4A8BE3812BD65DB8005D466E /* RequestConfigManager.m in Sources */,
