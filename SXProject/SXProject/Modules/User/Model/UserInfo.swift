@@ -20,11 +20,12 @@ import Foundation
  */
 
 /// 用户相关
-let kUserId = UserSingleton.shared.getToken()
-let kPhone = UserSingleton.shared.getHhtPageUrl()
-let kProductKey = UserSingleton.shared.getHjfqPageUrl()
-let kDeviceName = UserSingleton.shared.getShowHhtPage()
-let kDeviceSecret = UserSingleton.shared.getUserId()
+let kToken = UserSingleton.shared.getToken()
+let kHhtPageUrl = UserSingleton.shared.getHhtPageUrl()
+let kHjfqPageUrl = UserSingleton.shared.getHjfqPageUrl()
+let kShowHhtPage = UserSingleton.shared.getShowHhtPage()
+let kUserId = UserSingleton.shared.getUserId()
+let kPhone = UserSingleton.shared.getPhone()
 
 
 struct UserInfo: HandyJSON {
@@ -37,6 +38,8 @@ struct UserInfo: HandyJSON {
 
     var token = ""
     var userId = ""
+    /// 手机号
+    var phone = ""
 }
 @objc class UserSingleton: NSObject {
     
@@ -58,6 +61,8 @@ struct UserInfo: HandyJSON {
         delUserDefault(key: "showHhtPage")
         delUserDefault(key: "hjfqPageUrl")
         delUserDefault(key: "hhtPageUrl")
+        delUserDefault(key: "phone")
+        
     }
     ///存储用户
     func getUser() {
@@ -66,6 +71,7 @@ struct UserInfo: HandyJSON {
         userInfo.showHhtPage =  getUserDefault(key: "showHhtPage")
         userInfo.hjfqPageUrl =  getUserDefault(key: "hjfqPageUrl")
         userInfo.hhtPageUrl =  getUserDefault(key: "hhtPageUrl")
+        userInfo.phone =  getUserDefault(key: "phone")
     }
     
     func upDataUser() {
@@ -74,6 +80,7 @@ struct UserInfo: HandyJSON {
         userInfo.showHhtPage =  getUserDefault(key: "showHhtPage")
         userInfo.hjfqPageUrl =  getUserDefault(key: "hjfqPageUrl")
         userInfo.hhtPageUrl =  getUserDefault(key: "hhtPageUrl")
+        userInfo.phone =  getUserDefault(key: "phone")
     }
     
     
@@ -98,15 +105,18 @@ struct UserInfo: HandyJSON {
         return  UserSingleton.shared.userInfo.userId
     }
     
+    @objc func getPhone() -> String {
+        return  UserSingleton.shared.userInfo.phone
+    }
     
     ///获取用户信息
     func getUserDetail() {
-        let userJson = getUserDefault(key: "userDetail")
-        let tempJson = userJson.sx.base64Decoded ?? ""
-        if let userInfoT: UserInfo = JSONHelper.parse(jsonString: tempJson) {
-            printLog(userInfoT)
-            userInfo = userInfoT
-        }
+//        let userJson = getUserDefault(key: "userDetail")
+//        let tempJson = userJson.sx.base64Decoded ?? ""
+//        if let userInfoT: UserInfo = JSONHelper.parse(jsonString: tempJson) {
+//            printLog(userInfoT)
+//            userInfo = userInfoT
+//        }
     }
     
     ///用户详情接口

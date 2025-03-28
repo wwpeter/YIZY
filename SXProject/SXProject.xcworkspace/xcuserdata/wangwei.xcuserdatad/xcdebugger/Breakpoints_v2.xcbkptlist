@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C5B2B2AF-CCBC-4185-95C2-8131448A35E5"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SXProject/NetWorking/API/BaseAPI/NetworkRequestManager.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "-requestPath:withParam:Success:Failure:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "F3449821-BB97-4656-82D7-C0AA75191854"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -30,10 +14,105 @@
             filePath = "SXProject/Modules/User/Model/UserInfo.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "userDetail()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F3449821-BB97-4656-82D7-C0AA75191854 - 8c654fb8279d2517"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SXProject.UserSingleton.userDetail() -&gt; ()"
+                  moduleName = "SXProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wangwei/Desktop/%E5%A4%96%E5%8C%85=%E4%B8%80%E7%9B%B4%E7%94%A8app/SXProject/SXProject/Modules/User/Model/UserInfo.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "128"
+                  endingLineNumber = "128"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "F3449821-BB97-4656-82D7-C0AA75191854 - e6742f3c8780e994"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String) -&gt; () in SXProject.UserSingleton.userDetail() -&gt; ()"
+                  moduleName = "SXProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wangwei/Desktop/%E5%A4%96%E5%8C%85=%E4%B8%80%E7%9B%B4%E7%94%A8app/SXProject/SXProject/Modules/User/Model/UserInfo.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "127"
+                  endingLineNumber = "127"
+                  offsetFromSymbolStart = "148">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "88C39444-A412-458D-8E5A-26A2E7DF0F6C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SXProject/Modules/My/MyController+List.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "88C39444-A412-458D-8E5A-26A2E7DF0F6C - 706007089d214e4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SXProject.MyController.tableView(_: __C.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "SXProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wangwei/Desktop/%E5%A4%96%E5%8C%85=%E4%B8%80%E7%9B%B4%E7%94%A8app/SXProject/SXProject/Modules/My/MyController+List.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "788">
+               </Location>
+               <Location
+                  uuid = "88C39444-A412-458D-8E5A-26A2E7DF0F6C - 706007089d214c5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SXProject.MyController.tableView(_: __C.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "SXProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wangwei/Desktop/%E5%A4%96%E5%8C%85=%E4%B8%80%E7%9B%B4%E7%94%A8app/SXProject/SXProject/Modules/My/MyController+List.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "808">
+               </Location>
+               <Location
+                  uuid = "88C39444-A412-458D-8E5A-26A2E7DF0F6C - 88908f35870c73e1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int) -&gt; () in SXProject.MyController.tableView(_: __C.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "SXProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wangwei/Desktop/%E5%A4%96%E5%8C%85=%E4%B8%80%E7%9B%B4%E7%94%A8app/SXProject/SXProject/Modules/My/MyController+List.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

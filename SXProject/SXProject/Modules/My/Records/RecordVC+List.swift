@@ -9,7 +9,6 @@ import UIKit
 
 extension RecordVC {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
         return sourceData.count
     }
     

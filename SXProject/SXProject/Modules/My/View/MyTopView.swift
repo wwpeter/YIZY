@@ -40,6 +40,10 @@ class MyTopView: UIView {
         self.initViewLayouts()
     }
     
+    func setTitle(title: String) {
+        nameLabel.text = title
+    }
+    
     //MARK: - initialize
     func initViews() {
         addSubview(groundImg)

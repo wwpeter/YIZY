@@ -24,7 +24,7 @@ class MyController: ViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        UserSingleton.shared.userDetail()// 用户信息
+//        UserSingleton.shared.userDetail()// 用户信息
     }
     
     func initViews() {
@@ -59,7 +59,9 @@ class MyController: ViewController, UITableViewDelegate, UITableViewDataSource {
             if type == .headImg {
                  
             } else if type == .setting {
+                let vc = SettingVC()
                 
+                self?.navigationController?.pushViewController(vc, animated: true)
             } else if type == .loanRecord {
                 let vc = RecordVC()
                 vc.recordType = 0
@@ -116,8 +118,8 @@ class MyController: ViewController, UITableViewDelegate, UITableViewDataSource {
     
     func initConfig() {
         myTableView.tableFooterView = UIView()
-        view.addSubview(headerView)
-        
+//        view.addSubview(headerView)
+        headerView.setTitle(title: UserSingleton.shared.getPhone())
     }
 
     @objc func clickDetail() {

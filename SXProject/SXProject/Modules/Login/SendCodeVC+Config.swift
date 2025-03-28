@@ -49,6 +49,8 @@ extension SendCodeVC {
                 setUserDefault(key: "userId", value:  userId)
             }
             
+            setUserDefault(key: "phone", value:  self?.telephone ?? "")
+            
             self?.dismiss(animated: true)
             
             

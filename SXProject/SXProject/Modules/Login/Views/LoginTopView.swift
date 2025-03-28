@@ -62,7 +62,7 @@ class LoginTopView: UIView {
         let view = UIView()
         view.frame = CGRectMake(0, 0, kSizeScreenWidth, sxDynamic(290))
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        view.sx.gradientColor(AssetColors.bdfeafd.color, AssetColors.bf1F6Ff.color, CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 1))
+        view.sx.gradientColor(AssetColors.bdfeafd.color, kWhite, CGPoint(x: 0, y: 0), CGPoint(x: 0, y: 1))
         
         return view
     }()

@@ -38,9 +38,37 @@ extension MyController {
             
             self.navigationController?.pushViewController(vc, animated: true)
         } else if (indexPath.row == 2) {
-            
+            ZlAlertTool.showSystemAlert(title: "联系客服", message: "400-8888-888", actionTitles: ["确定"], cancelTitle: "取消") { index in
+                if index == 0 {
+                   
+                } else if index == 1 {
+                    self.callPhoneNumber("400-8888-888")
+                }
+            }
         } else if (indexPath.row == 3) {
+            let vc = SettingVC()
             
+            self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    func callPhoneNumber(_ number: String) {
+        // 清理号码中的非法字符（如空格、括号）
+        let cleanedNumber = number.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        
+        // 构造拨号 URL
+        guard let url = URL(string: "telprompt://\(cleanedNumber)") else {
+            print("无效的电话号码")
+            return
+        }
+        
+        // 检查设备是否支持拨号
+        guard UIApplication.shared.canOpenURL(url) else {
+            print("设备不支持拨号功能")
+            return
+        }
+        
+        // 跳转到拨号界面
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 }
