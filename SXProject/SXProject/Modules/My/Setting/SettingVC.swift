@@ -33,6 +33,7 @@ class SettingVC: ViewController, UITableViewDelegate, UITableViewDataSource {
     
     func initViews() {
         SX_navTitle = "设置"
+        SettingCell.registerCell(tableView: myTableView)
         view.addSubview(self.myTableView)
         view.addSubview(loginOutBut)
     }
@@ -43,11 +44,11 @@ class SettingVC: ViewController, UITableViewDelegate, UITableViewDataSource {
         let tableView = UITableView(frame: CGRectMake(0, 0, kSizeScreenWidth, kSizeScreenHight), style: .plain)
         tableView.delegate = self
         tableView.dataSource = self
-//        tableView.separatorStyle = .none
-//        tableView.separatorColor = .clear
+        tableView.separatorStyle = .none
+        tableView.separatorColor = .clear
         tableView.backgroundColor = kBF4F5F9
         tableView.layer.cornerRadius = sxDynamic(8)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "SystemCell")
+    
         
         return tableView
     }()
@@ -56,7 +57,7 @@ class SettingVC: ViewController, UITableViewDelegate, UITableViewDataSource {
     
     private lazy var loginOutBut: UIButton = {
         let but = CreateBaseView.makeBut("退出登录", kTBlue, .white, UIFont.sx.font_t16Blod)
-        but.frame = CGRectMake(sxDynamic(20), kSizeScreenHight - sxDynamic(110), kSizeScreenWidth - sxDynamic(40), sxDynamic(50))
+        but.frame = CGRectMake(sxDynamic(20), kSizeScreenHight - sxDynamic(170), kSizeScreenWidth - sxDynamic(40), sxDynamic(50))
         but.layer.cornerRadius = sxDynamic(25)
         but.addTarget(self, action: #selector(loginOut), for: .touchUpInside)
         

@@ -13,19 +13,15 @@ extension SettingVC {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         let cell = tableView.dequeueReusableCell(withIdentifier: "SystemCell", for: indexPath)
+        if let cell = tableView.dequeueReusableCell(withIdentifier: SettingCell.cellID()) as?  SettingCell {
+            let dic = dataSource[indexPath.row]
+            cell.setDataSource(dic: dic)
             
-        let dic = dataSource[indexPath.row]
-        cell.textLabel?.text = dic["title"]
-        cell.detailTextLabel?.text = dic["sub"]
-        
-        if indexPath.row == 0 {
-            cell.accessoryType = .disclosureIndicator
-        } else  {
-            cell.accessoryType = .none
+            return cell
         }
+     
         
-        return cell
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -38,6 +34,10 @@ extension SettingVC {
                 }
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        SettingCell.cellHeight()
     }
     
     /// 注销账号

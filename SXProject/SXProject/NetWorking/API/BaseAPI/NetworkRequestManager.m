@@ -61,6 +61,12 @@
                     success(tempStr);
                 }
             }
+        } else {
+            if (success){
+                NSDictionary *dic = @{@"code":result};
+                NSString *tempStr = [dic mj_JSONString];
+                success(tempStr);
+            }
         }
     } failureBlock:^(NSError * _Nullable error) {
         if (failure) {
