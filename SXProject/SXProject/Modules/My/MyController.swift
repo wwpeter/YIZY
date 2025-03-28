@@ -19,7 +19,7 @@ class MyController: ViewController, UITableViewDelegate, UITableViewDataSource {
         initViews()
         userDetail()
         config()
-       
+        initConfig()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -119,8 +119,21 @@ class MyController: ViewController, UITableViewDelegate, UITableViewDataSource {
     func initConfig() {
         myTableView.tableFooterView = UIView()
 //        view.addSubview(headerView)
-        headerView.setTitle(title: UserSingleton.shared.getPhone())
+        
+        let securePhone = UserSingleton.shared.getPhone()
+        if !securePhone.isEmpty {
+       
+            // 截取前3个字符
+    
+            if let result = securePhone.safeSubstring(from: 0, length: 3) {
+                headerView.setTitle(title: String.init(format: "%@********", result))
+            }
+            
+        }
+       
     }
+    
+    
 
     @objc func clickDetail() {
 //        let vc = MyDetailVC()
@@ -147,4 +160,23 @@ class MyController: ViewController, UITableViewDelegate, UITableViewDataSource {
         
         return view
     }()
+}
+extension String {
+    func safeSubstring(from index: Int, length: Int) -> String? {
+        guard index >= 0, length >= 0, index <= self.count else { return nil }
+        
+        let start = self.index(
+            self.startIndex,
+            offsetBy: index,
+            limitedBy: self.endIndex
+        ) ?? self.endIndex
+        
+        let end = self.index(
+            start,
+            offsetBy: length,
+            limitedBy: self.endIndex
+        ) ?? self.endIndex
+        
+        return String(self[start..<end])
+    }
 }

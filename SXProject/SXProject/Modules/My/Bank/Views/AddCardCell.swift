@@ -35,7 +35,8 @@ class AddCardCell: UITableViewCell, UITextFieldDelegate {
     
     //MARK: - action
     func setTitle(title: String, placeholder: String) {
-      
+        leftLabel.text = title
+        rightTextField.text = placeholder
     }
 
     func initViews() {
